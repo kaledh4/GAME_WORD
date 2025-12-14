@@ -26,7 +26,7 @@ const LetterComponent = ({ letter, bgColor }: Props) => {
     : "border-none shadow-lg";
 
   // Text color
-  const textColor = "text-white";
+  const textColor = animateBgColor === "bg-tile-absent" ? "text-[#9A9A9A]" : "text-white";
 
   useEffect(() => {
     if (bgColor !== letterInitial) {

@@ -7,12 +7,12 @@ module.exports = {
         'key-bg': '#3a3a3c', // Keyboard background - darker for better contrast
         'key-enter': '#569bf5', // Accent blue for Enter key
         'key-delete': '#e65353', // Accent red for delete key
-        'tile-empty': '#3a3a3a', // Empty tile background (darker)
-        'tile-border': '#2e2e2e', // Empty tile border
+        'tile-empty': '#1F1F1F', // Empty tile background
+        'tile-border': '#2E2E2E', // Empty tile border
         'tile-active': '#565758',
-        'tile-correct': '#1e7f5c', // Correct (green)
-        'tile-present': '#9e7c19', // Present (yellow)
-        'tile-absent': '#3a3a3a', // Absent (gray) - darker for wrong letters
+        'tile-correct': '#1E7F5C', // Correct (green)
+        'tile-present': '#9E7C19', // Present (yellow)
+        'tile-absent': '#3A3A3A', // Absent (gray)
       },
       fontFamily: {
         sans: ['IBM Plex Sans Arabic', 'system-ui', 'sans-serif'],
