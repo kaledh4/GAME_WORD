@@ -159,13 +159,13 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
   }, [typedWord, setGameResult, setCloseModal, wordColors, rightWord]);
 
   const getKeyStyle = (key: string) => {
-    const baseStyle = "cursor-pointer flex justify-center items-center rounded-md text-lg font-bold m-0.5 transition-all duration-150 select-none active:scale-95 shadow-md";
-    const colorStyle = keyboardState[key] ? `${keyboardState[key]} text-white` : "bg-gray-200 text-gray-900 hover:bg-gray-300";
+    const baseStyle = "cursor-pointer flex justify-center items-center rounded text-xl font-bold transition-all duration-150 select-none active:scale-95 shadow-sm";
+    const colorStyle = keyboardState[key] ? `${keyboardState[key]} text-white` : "bg-key-bg text-white hover:opacity-90";
 
     if (key === "Enter" || key === "Backspace") {
-      return `${baseStyle} ${colorStyle} px-4 h-12 flex-grow`;
+      return `${baseStyle} px-3 h-14 rounded`;
     }
-    return `${baseStyle} ${colorStyle} w-8 h-12 flex-1`;
+    return `${baseStyle} ${colorStyle} w-10 h-14 rounded`;
   };
 
   return (
@@ -176,11 +176,16 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
         ))}
       </div>
 
-      <div className="w-full max-w-lg px-2 pb-4">
+      <div className="w-full max-w-lg px-1 pb-4 select-none">
         {keyboardRows.map((row, rowIndex) => (
-          <div key={rowIndex} className="flex justify-center w-full mb-1" dir="rtl">
+          <div key={rowIndex} className="flex justify-center w-full mb-2 gap-1.5" dir="rtl">
             {rowIndex === 2 && (
-              <button className={getKeyStyle("Enter")} onClick={() => handleKeyboardClick("Enter")}>إدخال</button>
+              <button
+                className={`${getKeyStyle("Enter")} bg-key-enter text-white text-sm`}
+                onClick={() => handleKeyboardClick("Enter")}
+              >
+                إدخال
+              </button>
             )}
             {row.map((key) => (
               <button
@@ -192,10 +197,11 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
               </button>
             ))}
             {rowIndex === 2 && (
-              <button className={getKeyStyle("Backspace")} onClick={() => handleKeyboardClick("Backspace")}>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414 6.414a2 2 0 001.414.586H19a2 2 0 002-2V7a2 2 0 00-2-2h-8.172a2 2 0 00-1.414.586L3 12z" />
-                </svg>
+              <button
+                className={`${getKeyStyle("Backspace")} bg-key-delete text-white text-sm`}
+                onClick={() => handleKeyboardClick("Backspace")}
+              >
+                مسح
               </button>
             )}
           </div>

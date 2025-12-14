@@ -7,15 +7,17 @@ interface Props {
 
 const Header = ({ closeModal, setCloseModal }: Props) => {
   return (
-    <header className="flex items-center justify-between w-full max-w-lg px-4 py-4 mb-4 border-b border-white/10 bg-white/5 backdrop-blur-md rounded-b-xl shadow-lg" dir="rtl">
-      <button
-        className="p-2 rounded-full hover:bg-white/10 transition-colors text-white"
-        onClick={() => setCloseModal(false)}
-        aria-label="Statistics"
-      >
-        <Statistics />
-      </button>
-      <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 font-sans">
+    <header className="flex items-center justify-between w-full max-w-lg px-4 py-2 mb-2 border-b border-tile-border" dir="rtl">
+      <div className="flex gap-2">
+        <button
+          className="p-1 rounded hover:bg-white/10 transition-colors text-white"
+          onClick={() => setCloseModal(false)}
+          aria-label="Statistics"
+        >
+          <Statistics />
+        </button>
+      </div>
+      <h1 className="text-3xl font-bold text-white font-sans tracking-wide">
         خمن الكلمة 3.0
       </h1>
       <div className="w-8"></div> {/* Spacer for centering */}

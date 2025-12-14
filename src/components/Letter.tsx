@@ -19,7 +19,7 @@ const LetterComponent = ({ letter, bgColor }: Props) => {
 
   // Border styles
   const borderClasses = isInitial
-    ? (isFilled ? "border-2 border-gray-400 scale-105" : "border-2 border-gray-700 bg-white/5")
+    ? (isFilled ? "border-2 border-tile-active scale-105" : "border-2 border-tile-border bg-transparent")
     : "border-none shadow-lg";
 
   // Text color

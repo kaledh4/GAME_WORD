@@ -3,14 +3,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#10b981', // Emerald 500
-        secondary: '#3b82f6', // Blue 500
-        dark: '#1f2937', // Gray 800
-        darker: '#111827', // Gray 900
-        light: '#f3f4f6', // Gray 100
-        accent: '#8b5cf6', // Violet 500
-        'glass-white': 'rgba(255, 255, 255, 0.1)',
-        'glass-black': 'rgba(0, 0, 0, 0.3)',
+        'game-bg': '#121213',
+        'key-bg': '#818384',
+        'key-enter': '#569bf5', // Blue
+        'key-delete': '#e65353', // Red
+        'tile-border': '#3a3a3c',
+        'tile-active': '#565758',
+        'tile-correct': '#538d4e', // Green
+        'tile-present': '#b59f3b', // Yellow
+        'tile-absent': '#3a3a3c', // Dark Gray
       },
       fontFamily: {
         sans: ['Tajawal', 'sans-serif'],
