@@ -4,7 +4,7 @@ module.exports = {
     extend: {
       colors: {
         'game-bg': '#0f1011',
-        'key-bg': '#4a4a4c', // Keyboard background - lighter for better visibility
+        'key-bg': '#3a3a3c', // Keyboard background - darker for better contrast
         'key-enter': '#569bf5', // Accent blue for Enter key
         'key-delete': '#e65353', // Accent red for delete key
         'tile-empty': '#1f1f1f', // Empty tile background (dark neutral)
@@ -12,7 +12,7 @@ module.exports = {
         'tile-active': '#565758',
         'tile-correct': '#1e7f5c', // Correct (green)
         'tile-present': '#9e7c19', // Present (yellow)
-        'tile-absent': '#5a5a5a', // Absent (gray) - lighter for better visibility
+        'tile-absent': '#787878', // Absent (gray) - much clearer for wrong letters
       },
       fontFamily: {
         sans: ['IBM Plex Sans Arabic', 'system-ui', 'sans-serif'],
