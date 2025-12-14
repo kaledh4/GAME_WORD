@@ -38,7 +38,17 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
   const addLetterToBoard = (key: string): void => {
     setBoardWords((prev) => {
       const newBoardWords = [...prev];
-      newBoardWords[wordIndexRef.current] = [...(newBoardWords[wordIndexRef.current] || []), key];
+      const currentRow = [...(newBoardWords[wordIndexRef.current] || [])];
+      
+      // Find the first empty position
+      for (let i = 0; i < 5; i++) {
+        if (!currentRow[i]) {
+          currentRow[i] = key;
+          break;
+        }
+      }
+      
+      newBoardWords[wordIndexRef.current] = currentRow;
       return newBoardWords;
     });
   };
@@ -46,8 +56,17 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
   const deleteLetterFromBoard = (): void => {
     setBoardWords((prev) => {
       const newBoardWords = [...prev];
-      newBoardWords[wordIndexRef.current] = [...(newBoardWords[wordIndexRef.current] || [])];
-      newBoardWords[wordIndexRef.current].pop();
+      const currentRow = [...(newBoardWords[wordIndexRef.current] || [])];
+      
+      // Find and remove the last filled position
+      for (let i = 4; i >= 0; i--) {
+        if (currentRow[i]) {
+          currentRow[i] = undefined;
+          break;
+        }
+      }
+      
+      newBoardWords[wordIndexRef.current] = currentRow;
       return newBoardWords;
     });
   };
@@ -81,14 +100,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
         const newBoardWords = [...prev];
         const currentRow = [...(newBoardWords[wordIndexRef.current] || [])];
         
-        // Fill gaps before the revealed position
-        for (let i = 0; i < index; i++) {
-          if (!currentRow[i]) {
-            currentRow[i] = '';
-          }
-        }
-        
-        // Set the revealed letter
+        // Only set the revealed letter at the specific position
         currentRow[index] = chars[index];
         
         newBoardWords[wordIndexRef.current] = currentRow;
