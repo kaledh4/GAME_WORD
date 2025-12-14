@@ -18,7 +18,7 @@ function App() {
   };
 
   return (
-    <div className="w-full relative mx-auto flex flex-col items-center justify-center min-h-screen bg-game-bg text-white overflow-hidden">
+    <div className="w-full relative mx-auto flex flex-col items-center justify-center min-h-screen bg-game-bg text-white overflow-hidden pt-8 safe-top">
       <Header closeModal={closeModal} setCloseModal={setCloseModal} />
       <Game
         key={gameId}
