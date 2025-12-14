@@ -56,8 +56,7 @@ const LetterComponent = ({ letter, bgColor }: Props) => {
 
   return (
     <div
-      className={`${baseClasses} ${borderClasses} ${textColor} ${animationClass} ${flipClass} ${flipOutClass} ${animateBgColor !== letterInitial ? animateBgColor : ""
-        }`}
+      className={`${baseClasses} ${borderClasses} ${textColor} ${animationClass} ${flipClass} ${flipOutClass} ${animateBgColor}`}
     >
       {letter}
     </div>

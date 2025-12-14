@@ -227,7 +227,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
         ))}
       </div>
 
-      <div className="w-full max-w-lg px-1 pb-4 select-none max-h-[40vh]">
+      <div className="w-full max-w-lg px-1 pb-4 select-none">
         <div className="flex justify-end mb-2 px-1" dir="rtl">
           <button
             className={`cursor-pointer flex items-center justify-center rounded-lg px-3 py-2 text-sm font-semibold shadow-sm transition-all duration-150 ${
