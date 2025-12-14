@@ -3,18 +3,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'game-bg': '#121213',
-        'key-bg': '#818384',
-        'key-enter': '#569bf5', // Blue
-        'key-delete': '#e65353', // Red
-        'tile-border': '#3a3a3c',
+        'game-bg': '#0f1011',
+        'key-bg': '#3a3a3c',
+        'key-enter': '#569bf5', // Accent blue for Enter key
+        'key-delete': '#e65353', // Accent red for delete key
+        'tile-empty': '#1f1f1f', // Empty tile background (dark neutral)
+        'tile-border': '#2e2e2e', // Empty tile border
         'tile-active': '#565758',
-        'tile-correct': '#538d4e', // Green
-        'tile-present': '#b59f3b', // Yellow
-        'tile-absent': '#3a3a3c', // Dark Gray
+        'tile-correct': '#1e7f5c', // Correct (green)
+        'tile-present': '#9e7c19', // Present (yellow)
+        'tile-absent': '#3a3a3a', // Absent (gray)
       },
       fontFamily: {
-        sans: ['Tajawal', 'sans-serif'],
+        sans: ['Cairo', 'system-ui', 'sans-serif'],
       },
       keyframes: {
         pop: {

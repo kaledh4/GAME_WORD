@@ -12,18 +12,20 @@ interface Props {
   setCloseModal: React.Dispatch<React.SetStateAction<boolean>>;
   setGameResult: React.Dispatch<React.SetStateAction<string>>;
   onNewGame: () => void;
+  onMagicHelpUsed: () => void;
 }
 
-const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewGame }: Props) => {
+const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewGame, onMagicHelpUsed }: Props) => {
   const rightWord = useMemo(() => getWordOfTheDay(), []);
 
   let wordIndexRef = useRef(0);
 
   const [keyboardState, setKeyboardState] = useState<{ [key: string]: string }>({});
-  const [boardWords, setBoardWords] = useState<Array<any>>([[], [], [], [], [], []]);
+  const [boardWords, setBoardWords] = useState<Array<any>>([[], [], [], [], [], [], [], []]);
   const [isErrors, setIsErrors] = useState<Array<boolean>>([]);
   const [disableKeyBoard, setDisableKeyboard] = useState<boolean>(false);
   const [toastData, setToastData] = useState<Array<any>>([]);
+  const [hasUsedMagicHelp, setHasUsedMagicHelp] = useState<boolean>(false);
 
   const typedWord = boardWords[wordIndexRef.current]?.join("");
 
@@ -34,15 +36,64 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
   };
 
   const addLetterToBoard = (key: string): void => {
-    const newBoardWords = [...boardWords];
-    newBoardWords[wordIndexRef.current].push(key);
-    setBoardWords(newBoardWords);
+    setBoardWords((prev) => {
+      const newBoardWords = [...prev];
+      newBoardWords[wordIndexRef.current] = [...(newBoardWords[wordIndexRef.current] || []), key];
+      return newBoardWords;
+    });
   };
 
   const deleteLetterFromBoard = (): void => {
-    const newBoardWords = [...boardWords];
-    newBoardWords[wordIndexRef.current].pop();
-    setBoardWords(newBoardWords);
+    setBoardWords((prev) => {
+      const newBoardWords = [...prev];
+      newBoardWords[wordIndexRef.current] = [...(newBoardWords[wordIndexRef.current] || [])];
+      newBoardWords[wordIndexRef.current].pop();
+      return newBoardWords;
+    });
+  };
+
+  const useMagicHelp = (): void => {
+    if (hasUsedMagicHelp || disableKeyBoard || boardWords[wordIndexRef.current - 1]?.join("") === rightWord) return;
+
+    setHasUsedMagicHelp(true);
+    onMagicHelpUsed();
+
+    const revealablePositions = [1, 3]; // 0-based, skip 0, 2, 4
+    const choice = Math.random() < 0.5 ? "letter" : "hint";
+
+    if (choice === "letter") {
+      const index = revealablePositions[Math.floor(Math.random() * revealablePositions.length)];
+      const chars = rightWord.split("");
+
+      setBoardWords((prev) => {
+        const newBoardWords = [...prev];
+        const currentRow = [...(newBoardWords[wordIndexRef.current] || [])];
+        if (!currentRow[index]) {
+          currentRow[index] = chars[index];
+          newBoardWords[wordIndexRef.current] = currentRow;
+        }
+        return newBoardWords;
+      });
+
+      setToastData((prev) => [...prev, "تم كشف حرف واحد (ليس في المنتصف)!"]);
+      return;
+    }
+
+    const duplicateMap: { [key: string]: number } = {};
+    for (const ch of rightWord.split("")) {
+      duplicateMap[ch] = (duplicateMap[ch] || 0) + 1;
+    }
+    const duplicateLettersCount = Object.values(duplicateMap).filter((c) => c > 1).length;
+
+    const hints = [
+      "أول حرفين: _ _",
+      "آخر حرفين: _ _",
+      "الحرف موجود لكنه ليس في مكانه",
+      `عدد الحروف المكررة: ${duplicateLettersCount}`,
+    ];
+
+    const hint = hints[Math.floor(Math.random() * hints.length)];
+    setToastData((prev) => [...prev, hint]);
   };
 
   const handleEnter = (): void => {
@@ -147,7 +198,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
   }, [disableKeyBoard, setCloseModal, setGameResult, wordColors, boardWords, rightWord]);
 
   useEffect(() => {
-    if (wordIndexRef.current === 6 && typedWord !== rightWord) {
+    if (wordIndexRef.current === 8 && typedWord !== rightWord) {
       setTimeout(() => {
         setToastData([rightWord]);
       }, 1200);
@@ -170,13 +221,25 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
 
   return (
     <>
-      <div className="grid grid-rows-6 gap-1 mb-4" dir="rtl">
-        {[0, 1, 2, 3, 4, 5].map((row) => (
+      <div className="grid grid-rows-8 gap-1 mb-4" dir="rtl">
+        {[0, 1, 2, 3, 4, 5, 6, 7].map((row) => (
           <Row key={row} word={boardWords[row]} wordColors={wordColors[row] ?? []} error={isErrors[row] ?? false} />
         ))}
       </div>
 
-      <div className="w-full max-w-lg px-1 pb-4 select-none">
+      <div className="w-full max-w-lg px-1 pb-4 select-none max-h-[40vh]">
+        <div className="flex justify-end mb-2 px-1" dir="rtl">
+          <button
+            className={`cursor-pointer flex items-center justify-center rounded-lg px-3 py-2 text-sm font-semibold shadow-sm transition-all duration-150 ${
+              hasUsedMagicHelp ? "bg-tile-border text-gray-400 cursor-not-allowed" : "bg-tile-active text-white hover:opacity-90"
+            }`}
+            onClick={useMagicHelp}
+            disabled={hasUsedMagicHelp}
+          >
+            <span className="ml-1">✨</span>
+            <span>مساعدة سحرية</span>
+          </button>
+        </div>
         {keyboardRows.map((row, rowIndex) => (
           <div key={rowIndex} className="flex justify-center w-full mb-2 gap-1.5" dir="rtl">
             {rowIndex === 2 && (

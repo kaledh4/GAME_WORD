@@ -11,8 +11,9 @@ interface Props {
   gameResult: string;
   setCloseModal: React.Dispatch<React.SetStateAction<boolean>>;
   onNewGame: () => void;
+  usedMagicHelp: boolean;
 }
-const Modal = ({ gameResult, data, closeModal, setCloseModal, onNewGame }: Props) => {
+const Modal = ({ gameResult, data, closeModal, setCloseModal, onNewGame, usedMagicHelp }: Props) => {
   const [dsiplay, setDisplay] = useState<string>("hidden");
   const [toastData, setToastData] = useState<Array<any>>([]);
   const { letterAbsent, letterExist, letterRight } = letterColors;
@@ -49,15 +50,19 @@ const Modal = ({ gameResult, data, closeModal, setCloseModal, onNewGame }: Props
         onClick={handleClick}
       ></div>
       <div
-        className={` z-50 absolute ${dsiplay} flex-col justify-center items-center w-11/12 max-w-md h-auto py-6 bg-game-bg border border-tile-border rounded-xl shadow-2xl p-4 text-white ${closeModal ? " animate-slide-out" : "animate-slide-in"
-          }`}
+        className={`z-50 fixed ${dsiplay} flex-col justify-start items-center w-full max-w-md mx-auto bottom-0 left-0 right-0 h-auto py-6 bg-game-bg border-t border-tile-border rounded-t-2xl shadow-2xl p-4 text-white ${
+          closeModal ? "animate-slide-out" : "animate-slide-in"
+        }`}
       >
         <div className="cursor-pointer self-start w-100 mb-7" onClick={handleClick}>
           <Close />
         </div>
-        <div className="w-2/3 h-full flex flex-col justify-center items-center">
-          <h1 className="text-xl font-bold">توزيع التخمينات</h1>
-          <div className="mt-5 w-full flex flex-col justify-center items-center">
+        <div className="w-full flex flex-col justify-center items-center">
+          <h1 className="text-xl font-bold mb-1">توزيع التخمينات</h1>
+          {usedMagicHelp && gameResult !== "idle" && (
+            <p className="text-xs text-gray-300 mb-3">تم استخدام المساعدة السحرية - لا توجد درجة كاملة في هذه الجولة</p>
+          )}
+          <div className="mt-3 w-full flex flex-col justify-center items-center">
             {gameResult !== "idle" ? (
               data?.map((wordColors, index) => {
                 let bool = false;
@@ -67,7 +72,7 @@ const Modal = ({ gameResult, data, closeModal, setCloseModal, onNewGame }: Props
                 });
                 bool = letterIndex === 5 ? true : false;
                 return (
-                  <div className="flex flex-row-reverse w-full items-center my-[2px]">
+                  <div className="flex flex-row-reverse w-full items-center my-[2px]" key={index}>
                     {index + 1}
                     <div className={`ml-2 font-bold px-2 ${bool && "w-full"} flex flex-row-reverse text-white ${bool ? letterRight : letterAbsent}`}>
                       {bool ? "1" : "0"}
@@ -76,7 +81,12 @@ const Modal = ({ gameResult, data, closeModal, setCloseModal, onNewGame }: Props
                 );
               })
             ) : (
-              <h2> لا توجد بيانات</h2>
+              <div className="flex flex-col items-center justify-center w-full py-6 animate-fade-in-up">
+                <div className="mb-2 text-3xl">📊</div>
+                <h2 className="text-lg font-semibold mb-1">توزيع التخمينات</h2>
+                <p className="text-sm text-gray-200">لا توجد بيانات بعد</p>
+                <p className="text-xs text-gray-400 mt-1">ابدأ اللعب لتظهر الإحصائيات</p>
+              </div>
             )}
           </div>
           {gameResult !== "idle" ? (

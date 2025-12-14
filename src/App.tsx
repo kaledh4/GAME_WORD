@@ -7,12 +7,14 @@ function App() {
   const [wordColors, setWordColors] = useState<Array<any>>([]);
   const [closeModal, setCloseModal] = useState<boolean>(true);
   const [gameResult, setGameResult] = useState<string>("idle");
+  const [usedMagicHelp, setUsedMagicHelp] = useState<boolean>(false);
 
   const handleNewGame = () => {
     setGameId((prev) => prev + 1);
     setWordColors([]);
     setCloseModal(true);
     setGameResult("idle");
+    setUsedMagicHelp(false);
   };
 
   return (
@@ -25,6 +27,7 @@ function App() {
         setCloseModal={setCloseModal}
         setGameResult={setGameResult}
         onNewGame={handleNewGame}
+        onMagicHelpUsed={() => setUsedMagicHelp(true)}
       />
       <Modal
         gameResult={gameResult}
@@ -32,6 +35,7 @@ function App() {
         closeModal={closeModal}
         setCloseModal={setCloseModal}
         onNewGame={handleNewGame}
+        usedMagicHelp={usedMagicHelp}
       />
     </div>
   );

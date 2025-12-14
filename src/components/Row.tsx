@@ -8,7 +8,7 @@ interface Props {
 }
 
 const Row = ({ word, wordColors, error }: Props) => {
-  const defaultBgColor = "bg-white";
+  const defaultBgColor = "bg-tile-empty";
   const [bgColors, setBgColors] = useState<Array<string>>([]);
 
   useEffect(() => {
