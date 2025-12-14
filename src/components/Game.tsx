@@ -253,7 +253,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
 
   return (
     <>
-      <div className="grid grid-rows-6 gap-1 mb-4" dir="rtl">
+      <div className="grid grid-rows-6 gap-1 mb-2" dir="rtl">
         {[0, 1, 2, 3, 4, 5].map((row) => (
           <Row key={row} word={boardWords[row]} wordColors={wordColors[row] ?? []} error={isErrors[row] ?? false} />
         ))}
