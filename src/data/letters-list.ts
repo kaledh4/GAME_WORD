@@ -40,8 +40,8 @@ export const lettersList: string[] = [
 ];
 
 export const letterColors = {
-  letterInitial: "bg-white",
-  letterAbsent: "bg-gray-500",
-  letterExist: "bg-yellow-500",
-  letterRight: "bg-green-700"
+  letterInitial: "bg-transparent",
+  letterAbsent: "bg-tile-absent",
+  letterExist: "bg-tile-present",
+  letterRight: "bg-tile-correct"
 };

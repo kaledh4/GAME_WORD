@@ -45,11 +45,11 @@ const Modal = ({ gameResult, data, closeModal, setCloseModal, onNewGame }: Props
     <>
       <div
         className={`${closeModal ? "hidden" : "flex"
-          }  flex-nowrap justify-center items-center absolute p-0 m-0 top-0 right-0 bottom-0 w-full h-full bg-white/70 z-30`}
+          }  flex-nowrap justify-center items-center absolute p-0 m-0 top-0 right-0 bottom-0 w-full h-full bg-black/80 z-30 backdrop-blur-sm`}
         onClick={handleClick}
       ></div>
       <div
-        className={` z-50 absolute ${dsiplay} flex-col justify-center items-center w-2/3 h-auto py-5 bg-white drop-shadow-2xl p-3 ${closeModal ? " animate-slide-out" : "animate-slide-in"
+        className={` z-50 absolute ${dsiplay} flex-col justify-center items-center w-11/12 max-w-md h-auto py-6 bg-game-bg border border-tile-border rounded-xl shadow-2xl p-4 text-white ${closeModal ? " animate-slide-out" : "animate-slide-in"
           }`}
       >
         <div className="cursor-pointer self-start w-100 mb-7" onClick={handleClick}>
@@ -81,12 +81,12 @@ const Modal = ({ gameResult, data, closeModal, setCloseModal, onNewGame }: Props
           </div>
           {gameResult !== "idle" ? (
             <div className="flex flex-col w-full items-center">
-              <button onClick={handleShare} className={`mt-5 mb-2 flex px-8 py-4 rounded-md ${letterRight} hover:bg-green-600 text-white font-bold w-full justify-center`}>
+              <button onClick={handleShare} className={`mt-5 mb-2 flex px-8 py-4 rounded-md ${letterRight} hover:opacity-90 text-white font-bold w-full justify-center shadow-lg transition-all`}>
                 <Share />
                 <span className="mr-2">شارك</span>
                 <Toast toastData={toastData} setToastData={setToastData} />
               </button>
-              <button onClick={onNewGame} className="mt-2 mb-5 flex px-8 py-4 rounded-md bg-blue-500 hover:bg-blue-600 text-white font-bold w-full justify-center">
+              <button onClick={onNewGame} className="mt-2 mb-5 flex px-8 py-4 rounded-md bg-key-enter hover:opacity-90 text-white font-bold w-full justify-center shadow-lg transition-all">
                 لعبة جديدة
               </button>
             </div>
