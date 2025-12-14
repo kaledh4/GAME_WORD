@@ -185,7 +185,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
         setDisableKeyboard(false);
       }, 1200);
     }
-  }, [wordColors]);
+  }, [wordColors, boardWords]);
 
   useEffect(() => {
     if (boardWords[wordIndexRef.current - 1]?.join("") === rightWord && !disableKeyBoard) {
