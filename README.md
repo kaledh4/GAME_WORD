@@ -29,10 +29,24 @@ This is a premium Arabic Wordle clone built with React, TypeScript, and Tailwind
 
 ## Deployment
 
-This project is ready for GitHub Pages.
-1. Push to GitHub.
-2. Go to Settings > Pages.
-3. Select the `gh-pages` branch (or configure a workflow to deploy the `build` folder).
+This project uses GitHub Actions for automatic deployment to GitHub Pages.
+
+### Automatic Deployment (Recommended)
+1. Push to the `main` branch
+2. GitHub Actions will automatically build and deploy the site
+3. Visit your GitHub Pages URL once deployment completes
+
+### Manual Deployment
+If you prefer to deploy manually:
+```bash
+npm run deploy
+```
+
+### GitHub Pages Configuration
+- The workflow is configured in `.github/workflows/deploy.yml`
+- Builds the React app and deploys to GitHub Pages
+- Automatically triggers on pushes to the `main` branch
+- The deployed site will be available at: `https://kaledh4.github.io/GAME_WORD/`
 
 ## Credits
 
