@@ -80,10 +80,18 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
       setBoardWords((prev) => {
         const newBoardWords = [...prev];
         const currentRow = [...(newBoardWords[wordIndexRef.current] || [])];
-        if (!currentRow[index]) {
-          currentRow[index] = chars[index];
-          newBoardWords[wordIndexRef.current] = currentRow;
+        
+        // Fill gaps before the revealed position
+        for (let i = 0; i < index; i++) {
+          if (!currentRow[i]) {
+            currentRow[i] = '';
+          }
         }
+        
+        // Set the revealed letter
+        currentRow[index] = chars[index];
+        
+        newBoardWords[wordIndexRef.current] = currentRow;
         return newBoardWords;
       });
 
