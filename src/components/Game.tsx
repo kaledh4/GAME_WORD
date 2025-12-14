@@ -62,7 +62,19 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
     const choice = Math.random() < 0.5 ? "letter" : "hint";
 
     if (choice === "letter") {
-      const index = revealablePositions[Math.floor(Math.random() * revealablePositions.length)];
+      // Filter positions that are not already revealed
+      const availablePositions = revealablePositions.filter(index => {
+        const currentRow = boardWords[wordIndexRef.current] || [];
+        return !currentRow[index]; // Only use positions that are empty
+      });
+      
+      if (availablePositions.length === 0) {
+        // All positions are filled, give hint instead
+        setToastData((prev) => [...prev, "جميع الحروف المكشوفة!"]);
+        return;
+      }
+      
+      const index = availablePositions[Math.floor(Math.random() * availablePositions.length)];
       const chars = rightWord.split("");
 
       setBoardWords((prev) => {
@@ -75,7 +87,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
         return newBoardWords;
       });
 
-      setToastData((prev) => [...prev, "تم كشف حرف واحد (ليس في المنتصف)!"]);
+      setToastData((prev) => [...prev, "تم كشف حرف جديد!"]);
       return;
     }
 
