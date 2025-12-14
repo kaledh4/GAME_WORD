@@ -15,7 +15,7 @@ module.exports = {
         'tile-absent': '#5a5a5a', // Absent (gray) - lighter for better visibility
       },
       fontFamily: {
-        sans: ['Cairo', 'system-ui', 'sans-serif'],
+        sans: ['IBM Plex Sans Arabic', 'system-ui', 'sans-serif'],
       },
       keyframes: {
         pop: {

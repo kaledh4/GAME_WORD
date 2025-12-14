@@ -17,13 +17,16 @@ const LetterComponent = ({ letter, bgColor }: Props) => {
   // Base classes
   const baseClasses = "w-14 h-14 sm:w-12 sm:h-12 flex justify-center items-center text-3xl sm:text-2xl font-bold rounded-xl m-1.5 transition-all duration-300 transform";
 
+  // Background color - always apply the current background
+  const backgroundClass = animateBgColor || letterInitial;
+
   // Border styles
   const borderClasses = isInitial
     ? (isFilled ? "border-2 border-tile-active scale-105" : "border-2 border-tile-border")
     : "border-none shadow-lg";
 
   // Text color
-  const textColor = isInitial ? "text-white" : "text-white";
+  const textColor = "text-white";
 
   useEffect(() => {
     if (bgColor !== letterInitial) {
@@ -56,7 +59,7 @@ const LetterComponent = ({ letter, bgColor }: Props) => {
 
   return (
     <div
-      className={`${baseClasses} ${borderClasses} ${textColor} ${animationClass} ${flipClass} ${flipOutClass} ${animateBgColor}`}
+      className={`${baseClasses} ${borderClasses} ${textColor} ${animationClass} ${flipClass} ${flipOutClass} ${backgroundClass}`}
     >
       {letter}
     </div>

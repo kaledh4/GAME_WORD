@@ -21,7 +21,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
   let wordIndexRef = useRef(0);
 
   const [keyboardState, setKeyboardState] = useState<{ [key: string]: string }>({});
-  const [boardWords, setBoardWords] = useState<Array<any>>([[], [], [], [], [], [], [], []]);
+  const [boardWords, setBoardWords] = useState<Array<any>>([[], [], [], [], [], []]);
   const [isErrors, setIsErrors] = useState<Array<boolean>>([]);
   const [disableKeyBoard, setDisableKeyboard] = useState<boolean>(false);
   const [toastData, setToastData] = useState<Array<any>>([]);
@@ -58,7 +58,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
     setHasUsedMagicHelp(true);
     onMagicHelpUsed();
 
-    const revealablePositions = [1, 3]; // 0-based, skip 0, 2, 4
+    const revealablePositions = [1, 3, 4]; // 0-based, skip 0, 2 (center)
     const choice = Math.random() < 0.5 ? "letter" : "hint";
 
     if (choice === "letter") {
@@ -210,7 +210,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
   }, [disableKeyBoard, setCloseModal, setGameResult, wordColors, boardWords, rightWord]);
 
   useEffect(() => {
-    if (wordIndexRef.current === 8 && typedWord !== rightWord) {
+    if (wordIndexRef.current === 6 && typedWord !== rightWord) {
       setTimeout(() => {
         setToastData([rightWord]);
       }, 1200);
@@ -233,8 +233,8 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
 
   return (
     <>
-      <div className="grid grid-rows-8 gap-1 mb-4" dir="rtl">
-        {[0, 1, 2, 3, 4, 5, 6, 7].map((row) => (
+      <div className="grid grid-rows-6 gap-1 mb-4" dir="rtl">
+        {[0, 1, 2, 3, 4, 5].map((row) => (
           <Row key={row} word={boardWords[row]} wordColors={wordColors[row] ?? []} error={isErrors[row] ?? false} />
         ))}
       </div>
