@@ -4,7 +4,7 @@ export function compare(word: any, rightWord: any): (string | null)[] {
   const { letterAbsent, letterExist, letterRight } = letterColors;
   const lettersColors = [];
   // Check if letter exists in the right place
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 4; i++) {
     if (word[i] === rightWord[i]) {
       lettersColors.push(letterRight);
       rightWord[i] = null;
@@ -13,7 +13,7 @@ export function compare(word: any, rightWord: any): (string | null)[] {
     }
   }
   // Check letter if exists or not
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 4; i++) {
     // Check empty spot letters colors array
     if (!lettersColors[i]) {
       const letterPosition = rightWord.indexOf(word[i]);
