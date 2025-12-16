@@ -7,7 +7,7 @@ This is a premium Arabic Wordle clone built with React, TypeScript, and Tailwind
 - **Infinite Play**: Play as many times as you want with the "New Game" button.
 - **Premium Design**: Glassmorphism, gradients, and smooth animations.
 - **Mobile First**: Optimized for all screen sizes.
-- **Smart Dictionary**: Includes a comprehensive list of 5-letter Arabic words.
+- **Smart Dictionary**: Includes a comprehensive list of 4-letter Arabic words.
 - **Arabic Keyboard**: Full support for Arabic characters including Hamza variations.
 
 ## How to Run
