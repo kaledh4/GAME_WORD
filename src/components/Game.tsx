@@ -25,7 +25,6 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
   const [isErrors, setIsErrors] = useState<Array<boolean>>([]);
   const [disableKeyBoard, setDisableKeyboard] = useState<boolean>(false);
   const [toastData, setToastData] = useState<Array<any>>([]);
-  const [hasUsedMagicHelp, setHasUsedMagicHelp] = useState<boolean>(false);
 
   const typedWord = boardWords[wordIndexRef.current]?.join("");
 
@@ -39,7 +38,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
     setBoardWords((prev) => {
       const newBoardWords = [...prev];
       const currentRow = [...(newBoardWords[wordIndexRef.current] || [])];
-      
+
       // Find the first empty position
       for (let i = 0; i < 5; i++) {
         if (!currentRow[i]) {
@@ -47,7 +46,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
           break;
         }
       }
-      
+
       newBoardWords[wordIndexRef.current] = currentRow;
       return newBoardWords;
     });
@@ -57,7 +56,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
     setBoardWords((prev) => {
       const newBoardWords = [...prev];
       const currentRow = [...(newBoardWords[wordIndexRef.current] || [])];
-      
+
       // Find and remove the last filled position
       for (let i = 4; i >= 0; i--) {
         if (currentRow[i]) {
@@ -65,67 +64,49 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
           break;
         }
       }
-      
+
       newBoardWords[wordIndexRef.current] = currentRow;
       return newBoardWords;
     });
   };
 
   const useMagicHelp = (): void => {
-    if (hasUsedMagicHelp || disableKeyBoard || boardWords[wordIndexRef.current - 1]?.join("") === rightWord) return;
+    if (disableKeyBoard || boardWords[wordIndexRef.current - 1]?.join("") === rightWord) return;
 
-    setHasUsedMagicHelp(true);
     onMagicHelpUsed();
 
-    const revealablePositions = [1, 3, 4]; // 0-based, skip 0, 2 (center)
-    const choice = Math.random() < 0.5 ? "letter" : "hint";
-
-    if (choice === "letter") {
-      // Filter positions that are not already revealed
-      const availablePositions = revealablePositions.filter(index => {
-        const currentRow = boardWords[wordIndexRef.current] || [];
-        return !currentRow[index]; // Only use positions that are empty
+    const solvedIndices = new Set<number>();
+    wordColors.forEach((rowColors) => {
+      rowColors.forEach((color: string, index: number) => {
+        if (color === letterColors.letterRight) {
+          solvedIndices.add(index);
+        }
       });
-      
-      if (availablePositions.length === 0) {
-        // All positions are filled, give hint instead
-        setToastData((prev) => [...prev, "جميع الحروف المكشوفة!"]);
-        return;
-      }
-      
-      const index = availablePositions[Math.floor(Math.random() * availablePositions.length)];
-      const chars = rightWord.split("");
+    });
 
-      setBoardWords((prev) => {
-        const newBoardWords = [...prev];
-        const currentRow = [...(newBoardWords[wordIndexRef.current] || [])];
-        
-        // Only set the revealed letter at the specific position
-        currentRow[index] = chars[index];
-        
-        newBoardWords[wordIndexRef.current] = currentRow;
-        return newBoardWords;
-      });
+    const revealablePositions = [0, 1, 2, 3, 4];
+    const availablePositions = revealablePositions.filter((index) => {
+      const currentRow = boardWords[wordIndexRef.current] || [];
+      return !currentRow[index] && !solvedIndices.has(index);
+    });
 
-      setToastData((prev) => [...prev, "تم كشف حرف جديد!"]);
+    if (availablePositions.length === 0) {
+      setToastData((prev) => [...prev, "لا توجد حروف جديدة للكشف!"]);
       return;
     }
 
-    const duplicateMap: { [key: string]: number } = {};
-    for (const ch of rightWord.split("")) {
-      duplicateMap[ch] = (duplicateMap[ch] || 0) + 1;
-    }
-    const duplicateLettersCount = Object.values(duplicateMap).filter((c) => c > 1).length;
+    const index = availablePositions[Math.floor(Math.random() * availablePositions.length)];
+    const chars = rightWord.split("");
 
-    const hints = [
-      "أول حرفين: _ _",
-      "آخر حرفين: _ _",
-      "الحرف موجود لكنه ليس في مكانه",
-      `عدد الحروف المكررة: ${duplicateLettersCount}`,
-    ];
+    setBoardWords((prev) => {
+      const newBoardWords = [...prev];
+      const currentRow = [...(newBoardWords[wordIndexRef.current] || [])];
+      currentRow[index] = chars[index];
+      newBoardWords[wordIndexRef.current] = currentRow;
+      return newBoardWords;
+    });
 
-    const hint = hints[Math.floor(Math.random() * hints.length)];
-    setToastData((prev) => [...prev, hint]);
+    setToastData((prev) => [...prev, "تم كشف حرف جديد!"]);
   };
 
   const handleEnter = (): void => {
@@ -225,7 +206,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
       setTimeout(() => {
         setCloseModal(false);
         setGameResult("win");
-      }, 1200);
+      }, 5000);
     }
   }, [disableKeyBoard, setCloseModal, setGameResult, wordColors, boardWords, rightWord]);
 
@@ -237,7 +218,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
       setTimeout(() => {
         setCloseModal(false);
         setGameResult("lose");
-      }, 2000);
+      }, 5000);
     }
   }, [typedWord, setGameResult, setCloseModal, wordColors, rightWord]);
 
@@ -253,7 +234,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
 
   return (
     <>
-      <div className="grid grid-rows-6 gap-1 mb-2" dir="rtl">
+      <div className="grid grid-rows-6 gap-1 mb-8" dir="rtl">
         {[0, 1, 2, 3, 4, 5].map((row) => (
           <Row key={row} word={boardWords[row]} wordColors={wordColors[row] ?? []} error={isErrors[row] ?? false} />
         ))}
@@ -262,11 +243,8 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
       <div className="w-full max-w-lg px-1 pb-4 select-none">
         <div className="flex justify-end mb-2 px-1" dir="rtl">
           <button
-            className={`cursor-pointer flex items-center justify-center rounded-lg px-3 py-2 text-sm font-semibold shadow-sm transition-all duration-150 ${
-              hasUsedMagicHelp ? "bg-tile-border text-gray-400 cursor-not-allowed" : "bg-tile-active text-white hover:opacity-90"
-            }`}
+            className={`cursor-pointer flex items-center justify-center rounded-lg px-3 py-2 text-sm font-semibold shadow-sm transition-all duration-150 bg-tile-active text-white hover:opacity-90`}
             onClick={useMagicHelp}
-            disabled={hasUsedMagicHelp}
           >
             <span className="ml-1">✨</span>
             <span>مساعدة سحرية</span>

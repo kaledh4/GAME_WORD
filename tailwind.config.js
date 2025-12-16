@@ -12,7 +12,7 @@ module.exports = {
         'tile-active': '#565758',
         'tile-correct': '#1E7F5C', // Correct (green)
         'tile-present': '#9E7C19', // Present (yellow)
-        'tile-absent': '#3A3A3A', // Absent (gray)
+        'tile-absent': '#EF4444', // Absent (red)
       },
       fontFamily: {
         sans: ['IBM Plex Sans Arabic', 'system-ui', 'sans-serif'],
