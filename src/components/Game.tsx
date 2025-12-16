@@ -40,7 +40,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
       const currentRow = [...(newBoardWords[wordIndexRef.current] || [])];
 
       // Find the first empty position
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 4; i++) {
         if (!currentRow[i]) {
           currentRow[i] = key;
           break;
@@ -58,7 +58,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
       const currentRow = [...(newBoardWords[wordIndexRef.current] || [])];
 
       // Find and remove the last filled position
-      for (let i = 4; i >= 0; i--) {
+      for (let i = 3; i >= 0; i--) {
         if (currentRow[i]) {
           currentRow[i] = undefined;
           break;
@@ -84,7 +84,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
       });
     });
 
-    const revealablePositions = [0, 1, 2, 3, 4];
+    const revealablePositions = [0, 1, 2, 3];
     const availablePositions = revealablePositions.filter((index) => {
       const currentRow = boardWords[wordIndexRef.current] || [];
       return !currentRow[index] && !solvedIndices.has(index);
@@ -110,7 +110,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
   };
 
   const handleEnter = (): void => {
-    if (typedWord.length === 5) {
+    if (typedWord.length === 4) {
       if (wordsList.includes(typedWord)) {
         setDisableKeyboard(true);
         const newWordColors = [...wordColors];
@@ -124,7 +124,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
           setToastData([...toastData, "لا توجد في لائحة الكلمات"]);
         }
       }
-    } else if (typedWord.length < 5) {
+    } else if (typedWord.length < 4) {
       handleErrorInWord();
       if (toastData.length < 6) {
         setToastData([...toastData, "عدد الحروف غير كاف"]);
@@ -139,14 +139,14 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
       } else if (key === "Enter") {
         handleEnter();
       } else {
-        if (typedWord.length < 5) addLetterToBoard(key);
+        if (typedWord.length < 4) addLetterToBoard(key);
       }
     }
   };
 
   useEffect(() => {
     const listener = (e: KeyboardEvent) => {
-      if (/[\u0600-\u06FF]/.test(e.key) && e.key.length === 1 && typedWord?.length < 5) {
+      if (/[\u0600-\u06FF]/.test(e.key) && e.key.length === 1 && typedWord?.length < 4) {
         addLetterToBoard(e.key);
       }
       if (e.key === "Backspace" && typedWord?.length > 0) {
@@ -175,7 +175,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
   }, [isErrors]);
 
   useEffect(() => {
-    if (wordColors[wordIndexRef.current - 1]?.length === 5) {
+    if (wordColors[wordIndexRef.current - 1]?.length === 4) {
       const currentWordColors = wordColors[wordIndexRef.current - 1];
       const currentWord = boardWords[wordIndexRef.current - 1];
 
