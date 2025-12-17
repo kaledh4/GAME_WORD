@@ -7,7 +7,7 @@ interface Props {
 
 const Header = ({ closeModal, setCloseModal }: Props) => {
   return (
-    <header className="flex items-center justify-between w-full max-w-lg px-4 py-4 mb-6" dir="rtl">
+    <header className="flex items-center justify-between w-full max-w-md mx-auto px-4 py-3" dir="rtl">
       <div className="flex gap-2">
         <button
           className="p-1 rounded hover:bg-white/10 transition-colors text-white"
