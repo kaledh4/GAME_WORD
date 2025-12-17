@@ -15,7 +15,7 @@ const LetterComponent = ({ letter, bgColor }: Props) => {
   const isFilled = letter !== "";
 
   // Base classes
-  const baseClasses = "w-14 h-14 sm:w-12 sm:h-12 flex justify-center items-center text-3xl sm:text-2xl font-bold rounded-xl m-1.5 transition-all duration-300 transform";
+  const baseClasses = "w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 flex justify-center items-center text-2xl sm:text-3xl md:text-4xl font-bold rounded-xl m-1.5 transition-all duration-300 transform";
 
   // Background color - always apply the current background
   const backgroundClass = animateBgColor || letterInitial;

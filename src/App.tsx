@@ -19,7 +19,7 @@ function App() {
   };
 
   return (
-    <div className="w-full relative mx-auto flex flex-col items-center justify-center min-h-screen text-white overflow-hidden pt-4 safe-top">
+    <div className="w-full relative mx-auto flex flex-col items-center justify-start min-h-screen text-white overflow-hidden safe-top">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 right-20 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl animate-pulse"></div>
@@ -32,7 +32,7 @@ function App() {
         <Header closeModal={closeModal} setCloseModal={setCloseModal} />
         
         {/* Game Container with Enhanced Styling */}
-        <div className="w-full max-w-2xl px-4 mt-4">
+        <div className="w-full max-w-2xl px-4 mt-2">
           <Game
             key={gameId}
             wordColors={wordColors}

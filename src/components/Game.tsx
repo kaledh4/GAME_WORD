@@ -133,14 +133,13 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
   };
 
   const handleKeyboardClick = (key: string): void => {
-    if (!disableKeyBoard && boardWords[wordIndexRef.current - 1]?.join("") !== rightWord) {
-      if (key === "Backspace") {
-        if (typedWord.length > 0) deleteLetterFromBoard();
-      } else if (key === "Enter") {
-        handleEnter();
-      } else {
-        if (typedWord.length < 4) addLetterToBoard(key);
-      }
+    if (disableKeyBoard) return;
+    if (key === "Backspace") {
+      if (typedWord.length > 0) deleteLetterFromBoard();
+    } else if (key === "Enter") {
+      handleEnter();
+    } else {
+      if (typedWord.length < 4) addLetterToBoard(key);
     }
   };
 
@@ -234,13 +233,13 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
 
   return (
     <>
-      <div className="grid grid-rows-6 gap-1 mb-8" dir="rtl">
+      <div className="grid grid-rows-6 place-items-center gap-3 mb-16 mx-auto w-full max-w-2xl" dir="rtl">
         {[0, 1, 2, 3, 4, 5].map((row) => (
           <Row key={row} word={boardWords[row]} wordColors={wordColors[row] ?? []} error={isErrors[row] ?? false} />
         ))}
       </div>
 
-      <div className="w-full max-w-lg px-1 pb-4 select-none">
+      <div className="w-full max-w-2xl px-2 mt-6 pb-8 select-none mx-auto">
         <div className="flex justify-end mb-2 px-1" dir="rtl">
           <button
             className={`cursor-pointer flex items-center justify-center rounded-lg px-3 py-2 text-sm font-semibold shadow-sm transition-all duration-150 bg-tile-active text-white hover:opacity-90`}
@@ -251,10 +250,10 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
           </button>
         </div>
         {keyboardRows.map((row, rowIndex) => (
-          <div key={rowIndex} className="flex justify-center w-full mb-2 gap-1.5" dir="rtl">
+          <div key={rowIndex} className="flex justify-center w-full mb-3 gap-2" dir="rtl">
             {rowIndex === 2 && (
-              <button
-                className={`${getKeyStyle("Enter")} bg-key-enter text-white text-sm`}
+              <button type="button"
+                className={`${getKeyStyle("Enter")} bg-accent-sapphire hover:opacity-90 text-white text-sm pointer-events-auto z-10`}
                 onClick={() => handleKeyboardClick("Enter")}
               >
                 إدخال
@@ -263,6 +262,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
             {row.map((key) => (
               <button
                 key={key}
+                type="button"
                 className={getKeyStyle(key)}
                 onClick={() => handleKeyboardClick(key)}
               >
@@ -270,8 +270,8 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
               </button>
             ))}
             {rowIndex === 2 && (
-              <button
-                className={`${getKeyStyle("Backspace")} bg-key-delete text-white text-sm`}
+              <button type="button"
+                className={`${getKeyStyle("Backspace")} bg-accent-ruby hover:opacity-90 text-white text-sm pointer-events-auto z-10`}
                 onClick={() => handleKeyboardClick("Backspace")}
               >
                 مسح

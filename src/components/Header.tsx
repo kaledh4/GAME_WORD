@@ -7,7 +7,7 @@ interface Props {
 
 const Header = ({ closeModal, setCloseModal }: Props) => {
   return (
-    <header className="flex items-center justify-between w-full max-w-lg px-4 py-4 mb-6 border-b border-tile-border" dir="rtl">
+    <header className="flex items-center justify-between w-full max-w-2xl px-4 py-2 mb-4 border-b border-tile-border mx-auto" dir="rtl">
       <div className="flex gap-2">
         <button
           className="p-1 rounded hover:bg-white/10 transition-colors text-white"
@@ -17,7 +17,7 @@ const Header = ({ closeModal, setCloseModal }: Props) => {
           <Statistics />
         </button>
       </div>
-      <h1 className="text-3xl font-bold text-white font-sans tracking-wide">
+      <h1 className="text-3xl font-bold text-white font-sans tracking-wide header-accent">
         خمن الكلمة 3.0
       </h1>
       <div className="w-8"></div> {/* Spacer for centering */}

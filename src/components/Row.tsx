@@ -21,7 +21,7 @@ const Row = ({ word, wordColors, error }: Props) => {
     }
   }, [wordColors]);
   return (
-    <div className={`grid grid-cols-4 ${error && "animate-vibrate"}`} dir="rtl">
+    <div className={`grid grid-cols-4 justify-items-center w-fit mx-auto ${error && "animate-vibrate"}`} dir="rtl">
       {[0, 1, 2, 3].map((lett) => (
         <Letter key={lett} letter={word[lett] ?? ""} bgColor={bgColors[lett] ?? defaultBgColor} />
       ))}
