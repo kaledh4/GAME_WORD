@@ -221,44 +221,45 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
   }, [typedWord, setGameResult, setCloseModal, wordColors, rightWord]);
 
   const getKeyStyle = (key: string) => {
-    const baseStyle = "cursor-pointer flex justify-center items-center rounded-md text-xl font-bold transition-all duration-150 select-none active:scale-95 shadow-sm h-14";
+    const baseStyle = "cursor-pointer flex justify-center items-center rounded-md text-lg font-bold transition-all duration-150 select-none active:scale-95 shadow-sm h-12";
 
     const getColorClass = () => {
-      if (keyboardState[key] === letterColors.letterRight) return 'bg-letter-right text-white';
-      if (keyboardState[key] === letterColors.letterExist) return 'bg-letter-exist text-white';
-      if (keyboardState[key] === letterColors.letterAbsent) return 'bg-letter-absent text-white';
-      return 'bg-key-bg text-white hover:opacity-90';
+      if (keyboardState[key] === letterColors.letterRight) return 'bg-green-600 text-white';
+      if (keyboardState[key] === letterColors.letterExist) return 'bg-amber-500 text-white';
+      if (keyboardState[key] === letterColors.letterAbsent) return 'bg-gray-700 text-gray-400';
+      return 'bg-gray-600 text-white hover:bg-gray-500';
     };
 
-    if (key === "Enter" || key === "Backspace") {
-      return `${baseStyle} px-4`;
-    }
-    return `${baseStyle} w-10 ${getColorClass()}`;
+    return `${baseStyle} w-9 ${getColorClass()}`;
   };
 
   return (
-    <>
-      <div className="grid grid-rows-6 gap-1 mb-8" dir="rtl">
+    <div className="flex flex-col items-center w-full max-w-md mx-auto">
+      {/* Tiles Grid */}
+      <div className="grid grid-rows-6 gap-1.5 mb-6" dir="rtl">
         {[0, 1, 2, 3, 4, 5].map((row) => (
           <Row key={row} word={boardWords[row]} wordColors={wordColors[row] ?? []} error={isErrors[row] ?? false} />
         ))}
       </div>
 
-      <div className="w-full max-w-lg px-1 pb-4 select-none">
-        <div className="flex justify-end mb-2 px-1" dir="rtl">
-          <button
-            className={`cursor-pointer flex items-center justify-center rounded-lg px-3 py-2 text-sm font-semibold shadow-sm transition-all duration-150 bg-tile-active text-white hover:opacity-90`}
-            onClick={useMagicHelp}
-          >
-            <span className="ml-1">✨</span>
-            <span>مساعدة سحرية</span>
-          </button>
-        </div>
+      {/* Magic Help Button */}
+      <div className="flex justify-center mb-3 w-full" dir="rtl">
+        <button
+          className="cursor-pointer flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold shadow-md transition-all duration-150 bg-amber-500 text-white hover:bg-amber-600 active:scale-95"
+          onClick={useMagicHelp}
+        >
+          <span className="ml-1">✨</span>
+          <span>مساعدة سحرية</span>
+        </button>
+      </div>
+
+      {/* Keyboard */}
+      <div className="w-full px-1 pb-2 select-none">
         {keyboardRows.map((row, rowIndex) => (
-          <div key={rowIndex} className="flex justify-center w-full mb-2 gap-1.5" dir="rtl">
+          <div key={rowIndex} className="flex justify-center w-full mb-1.5 gap-1" dir="rtl">
             {rowIndex === 2 && (
               <button
-                className={`${getKeyStyle("Enter")} bg-key-bg text-white text-sm`}
+                className="cursor-pointer flex justify-center items-center rounded-md text-sm font-bold transition-all duration-150 select-none active:scale-95 shadow-sm h-12 px-3 bg-blue-600 text-white hover:bg-blue-700"
                 onClick={() => handleKeyboardClick("Enter")}
               >
                 إدخال
@@ -275,7 +276,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
             ))}
             {rowIndex === 2 && (
               <button
-                className={`${getKeyStyle("Backspace")} bg-key-bg text-white text-sm`}
+                className="cursor-pointer flex justify-center items-center rounded-md text-sm font-bold transition-all duration-150 select-none active:scale-95 shadow-sm h-12 px-3 bg-red-600 text-white hover:bg-red-700"
                 onClick={() => handleKeyboardClick("Backspace")}
               >
                 مسح
@@ -286,7 +287,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
       </div>
 
       <Toast toastData={toastData} setToastData={setToastData} rightWord={rightWord} />
-    </>
+    </div>
   );
 };
 

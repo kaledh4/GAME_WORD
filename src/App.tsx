@@ -19,23 +19,21 @@ function App() {
   };
 
   return (
-    <div className="w-full relative mx-auto flex flex-col items-center justify-center min-h-screen text-white overflow-hidden pt-4 safe-top">
-      {/* Main Content */}
-      <div className="relative z-10 w-full flex flex-col items-center">
-        <Header closeModal={closeModal} setCloseModal={setCloseModal} />
-        
-        {/* Game Container with Enhanced Styling */}
-        <div className="w-full max-w-2xl px-4 mt-4">
-          <Board
-            key={gameId}
-            wordColors={wordColors}
-            setWordColors={setWordColors}
-            setCloseModal={setCloseModal}
-            setGameResult={setGameResult}
-            onNewGame={handleNewGame}
-            onMagicHelpUsed={() => setUsedMagicHelp(true)}
-          />
-        </div>
+    <div className="w-full min-h-screen flex flex-col text-white safe-top bg-game-bg">
+      {/* Header at top */}
+      <Header closeModal={closeModal} setCloseModal={setCloseModal} />
+      
+      {/* Game Container - centered with flex-grow */}
+      <div className="flex-1 flex flex-col items-center justify-between px-4 py-2">
+        <Board
+          key={gameId}
+          wordColors={wordColors}
+          setWordColors={setWordColors}
+          setCloseModal={setCloseModal}
+          setGameResult={setGameResult}
+          onNewGame={handleNewGame}
+          onMagicHelpUsed={() => setUsedMagicHelp(true)}
+        />
       </div>
 
       <Modal
@@ -47,8 +45,8 @@ function App() {
         usedMagicHelp={usedMagicHelp}
       />
       
-      {/* Decorative Footer Element */}
-      <div className="absolute bottom-4 text-center text-xs text-white/30 font-light">
+      {/* Footer */}
+      <div className="text-center text-xs text-white/30 font-light py-2">
         <p>صُنع بـ ❤️ للغة العربية</p>
       </div>
     </div>
