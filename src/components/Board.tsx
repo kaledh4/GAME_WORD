@@ -146,10 +146,6 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
   useEffect(() => {
     const listener = (e: KeyboardEvent) => {
       if (disableKeyBoard) return;
-<<<<<<< Updated upstream:src/components/Board.tsx
-=======
-      
->>>>>>> Stashed changes:src/components/Game.tsx
       if (/[\u0600-\u06FF]/.test(e.key) && e.key.length === 1 && typedWord?.length < 4) {
         addLetterToBoard(e.key);
       }
@@ -160,10 +156,6 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
         handleEnter();
       }
     };
-<<<<<<< Updated upstream:src/components/Board.tsx
-=======
-    
->>>>>>> Stashed changes:src/components/Game.tsx
     window.addEventListener("keyup", listener);
     return () => {
       window.removeEventListener("keyup", listener);
