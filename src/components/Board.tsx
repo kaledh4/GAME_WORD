@@ -243,7 +243,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
       </div>
 
       {/* Magic Help Button */}
-      <div className="flex justify-center mb-3 w-full" dir="rtl">
+      <div className="flex justify-center my-6 w-full" dir="rtl">
         <button
           className="cursor-pointer flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold shadow-md transition-all duration-150 bg-amber-500 text-white hover:bg-amber-600 active:scale-95"
           onClick={useMagicHelp}
