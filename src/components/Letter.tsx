@@ -30,7 +30,7 @@ const LetterComponent = ({ letter, bgColor }: Props) => {
     if (animateBgColor === letterColors.letterAbsent) return 'bg-letter-absent';
     return isFilled ? 'bg-tile-bg border-2 border-tile-active' : 'bg-tile-bg border-2 border-gray-500';
   };
-  
+
   return (
     <div className={`${baseClasses} ${getBgColor()} text-white`}>
       {letter}

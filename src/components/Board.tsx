@@ -222,7 +222,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
 
   const getKeyStyle = (key: string) => {
     const baseStyle = "cursor-pointer flex justify-center items-center rounded-md text-xl font-bold transition-all duration-150 select-none active:scale-95 shadow-sm h-14";
-    
+
     const getColorClass = () => {
       if (keyboardState[key] === letterColors.letterRight) return 'bg-letter-right text-white';
       if (keyboardState[key] === letterColors.letterExist) return 'bg-letter-exist text-white';
