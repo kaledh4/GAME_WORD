@@ -83,9 +83,9 @@ const Modal = ({ gameResult, data, closeModal, setCloseModal, onNewGame, usedMag
             ) : (
               <div className="flex flex-col items-center justify-center w-full py-6 animate-fade-in-up">
                 <div className="mb-2 text-3xl">📊</div>
-                <h2 className="text-lg font-semibold mb-1">توزيع التخمينات</h2>
-                <p className="text-sm text-gray-200">لا توجد بيانات بعد</p>
-                <p className="text-xs text-gray-400 mt-1">ابدأ اللعب لتظهر الإحصائيات</p>
+                <h2 className="text-lg font-semibold mb-1">إحصائياتك</h2>
+                <p className="text-sm text-gray-200">لم تلعب أي لعبة بعد</p>
+                <p className="text-xs text-gray-400 mt-1">ابدأ اللعب لتظهر إحصائياتك هنا</p>
               </div>
             )}
           </div>
@@ -93,11 +93,11 @@ const Modal = ({ gameResult, data, closeModal, setCloseModal, onNewGame, usedMag
             <div className="flex flex-col w-full items-center">
               <button onClick={handleShare} className={`mt-5 mb-2 flex px-8 py-4 rounded-md ${letterRight} hover:opacity-90 text-white font-bold w-full justify-center shadow-lg transition-all`}>
                 <Share />
-                <span className="mr-2">شارك</span>
+                <span className="mr-2">شارك نتيجتك</span>
                 <Toast toastData={toastData} setToastData={setToastData} />
               </button>
               <button onClick={onNewGame} className="mt-2 mb-5 flex px-8 py-4 rounded-md bg-key-enter hover:opacity-90 text-white font-bold w-full justify-center shadow-lg transition-all">
-                لعبة جديدة
+                ابدأ لعبة جديدة
               </button>
             </div>
           ) : null}
