@@ -8,8 +8,13 @@ module.exports = {
       colors: {
         // Enhanced color palette
         'darker': '#0a0e14',
-        'game-bg': '#0a0e14',
-        'glass-white': 'rgba(255, 255, 255, 0.05)',
+        'game-bg': '#1e293b', // Dark blue-gray from image
+        'tile-bg': '#334155', // Lighter gray for tiles
+        'key-bg': '#475569', // Gray for keyboard
+        'tile-active': '#f59e0b', // Amber for active tile border
+        'letter-right': '#16a34a', // Green for correct letter
+        'letter-exist': '#ca8a04', // Yellow for existing letter
+        'letter-absent': '#475569', // Gray for absent letter
         
         // Custom color scheme
         'primary': {
