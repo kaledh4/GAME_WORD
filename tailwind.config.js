@@ -10,6 +10,10 @@ module.exports = {
         'darker': '#0a0e14',
         'game-bg': '#1e293b', // Dark blue-gray from image
         'tile-bg': '#334155', // Lighter gray for tiles
+        'tile-empty': '#334155', // Empty tile
+        'tile-absent': '#475569', // Gray for absent
+        'tile-present': '#ca8a04', // Yellow for present
+        'tile-correct': '#16a34a', // Green for correct
         'key-bg': '#475569', // Gray for keyboard
         'tile-active': '#f59e0b', // Amber for active tile border
         'letter-right': '#16a34a', // Green for correct letter
@@ -53,6 +57,15 @@ module.exports = {
         'tile-flip': 'tileFlip 0.6s ease',
         'tile-shake': 'tileShake 0.5s ease',
         'tile-bounce': 'tileBounce 0.3s ease',
+        'vibrate': 'vibrate 0.3s ease-in-out',
+      },
+      keyframes: {
+        vibrate: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '25%': { transform: 'translateX(-5px)' },
+          '50%': { transform: 'translateX(5px)' },
+          '75%': { transform: 'translateX(-5px)' },
+        },
       },
       backdropBlur: {
         xs: '2px',
