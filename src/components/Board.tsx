@@ -133,19 +133,19 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
   };
 
   const handleKeyboardClick = (key: string): void => {
-    if (!disableKeyBoard && boardWords[wordIndexRef.current - 1]?.join("") !== rightWord) {
-      if (key === "Backspace") {
-        if (typedWord.length > 0) deleteLetterFromBoard();
-      } else if (key === "Enter") {
-        handleEnter();
-      } else {
-        if (typedWord.length < 4) addLetterToBoard(key);
-      }
+    if (disableKeyBoard) return;
+    if (key === "Backspace") {
+      if (typedWord.length > 0) deleteLetterFromBoard();
+    } else if (key === "Enter") {
+      handleEnter();
+    } else {
+      if (typedWord.length < 4) addLetterToBoard(key);
     }
   };
 
   useEffect(() => {
     const listener = (e: KeyboardEvent) => {
+      if (disableKeyBoard) return;
       if (/[\u0600-\u06FF]/.test(e.key) && e.key.length === 1 && typedWord?.length < 4) {
         addLetterToBoard(e.key);
       }
@@ -156,9 +156,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
         handleEnter();
       }
     };
-    if (!disableKeyBoard && boardWords[wordIndexRef.current - 1]?.join("") !== rightWord) {
-      window.addEventListener("keyup", listener);
-    }
+    window.addEventListener("keyup", listener);
     return () => {
       window.removeEventListener("keyup", listener);
     };
@@ -201,14 +199,14 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
   }, [wordColors, boardWords]);
 
   useEffect(() => {
-    if (boardWords[wordIndexRef.current - 1]?.join("") === rightWord && !disableKeyBoard) {
+    if (boardWords[wordIndexRef.current - 1]?.join("") === rightWord) {
       setToastData(["أحسنت !"]);
       setTimeout(() => {
         setCloseModal(false);
         setGameResult("win");
-      }, 5000);
+      }, 2000);
     }
-  }, [disableKeyBoard, setCloseModal, setGameResult, wordColors, boardWords, rightWord]);
+  }, [setCloseModal, setGameResult, wordColors, boardWords, rightWord]);
 
   useEffect(() => {
     if (wordIndexRef.current === 6 && typedWord !== rightWord) {
@@ -223,13 +221,19 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
   }, [typedWord, setGameResult, setCloseModal, wordColors, rightWord]);
 
   const getKeyStyle = (key: string) => {
-    const baseStyle = "cursor-pointer flex justify-center items-center rounded text-xl font-bold transition-all duration-150 select-none active:scale-95 shadow-sm";
-    const colorStyle = keyboardState[key] ? `${keyboardState[key]} text-white` : "bg-key-bg text-white hover:opacity-90";
+    const baseStyle = "cursor-pointer flex justify-center items-center rounded-md text-xl font-bold transition-all duration-150 select-none active:scale-95 shadow-sm h-14";
+
+    const getColorClass = () => {
+      if (keyboardState[key] === letterColors.letterRight) return 'bg-letter-right text-white';
+      if (keyboardState[key] === letterColors.letterExist) return 'bg-letter-exist text-white';
+      if (keyboardState[key] === letterColors.letterAbsent) return 'bg-letter-absent text-white';
+      return 'bg-key-bg text-white hover:opacity-90';
+    };
 
     if (key === "Enter" || key === "Backspace") {
-      return `${baseStyle} px-3 h-14 rounded`;
+      return `${baseStyle} px-4`;
     }
-    return `${baseStyle} ${colorStyle} w-10 h-14 rounded`;
+    return `${baseStyle} w-10 ${getColorClass()}`;
   };
 
   return (
@@ -254,7 +258,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
           <div key={rowIndex} className="flex justify-center w-full mb-2 gap-1.5" dir="rtl">
             {rowIndex === 2 && (
               <button
-                className={`${getKeyStyle("Enter")} bg-key-enter text-white text-sm`}
+                className={`${getKeyStyle("Enter")} bg-key-bg text-white text-sm`}
                 onClick={() => handleKeyboardClick("Enter")}
               >
                 إدخال
@@ -271,7 +275,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
             ))}
             {rowIndex === 2 && (
               <button
-                className={`${getKeyStyle("Backspace")} bg-key-delete text-white text-sm`}
+                className={`${getKeyStyle("Backspace")} bg-key-bg text-white text-sm`}
                 onClick={() => handleKeyboardClick("Backspace")}
               >
                 مسح
