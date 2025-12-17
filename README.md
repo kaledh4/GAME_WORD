@@ -187,6 +187,36 @@ All enhancements work seamlessly across:
 3. Animations are optimized for 60fps
 4. Consider adding haptic feedback on mobile for tile interactions
 
+## 🔄 Workflow and Deployment
+
+This project uses GitHub Actions for continuous deployment:
+
+1. **Branch Structure**:
+   - `main` - Primary development and production branch
+   - All changes should be pushed to `main` for automatic deployment
+
+2. **Deployment Process**:
+   - Push to `main` triggers GitHub Actions workflow
+   - Automatically builds and deploys to GitHub Pages
+   - Live site: https://kaledh4.github.io/GAME_WORD/
+
+3. **Local Development**:
+   ```bash
+   # Install dependencies
+   npm install
+   
+   # Start development server
+   npm start
+   
+   # Build for production
+   npm run build
+   ```
+
+## 👤 Configuration
+
+- GitHub Username: `kaledh4`
+- Contact Email: `kaled.h4@gmail.com`
+
 ---
 
 Made with ❤️ for the Arabic language
