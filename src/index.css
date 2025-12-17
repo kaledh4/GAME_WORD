@@ -1,0 +1,429 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Enhanced Color Palette - Arabic-inspired rich tones */
+    --color-bg-primary: #0a0e14;
+    --color-bg-secondary: #111827;
+    --color-bg-tertiary: #1a2332;
+    
+    --color-accent-gold: #d4af37;
+    --color-accent-emerald: #10b981;
+    --color-accent-ruby: #ef4444;
+    --color-accent-sapphire: #3b82f6;
+    --color-accent-amber: #f59e0b;
+    
+    --color-surface: rgba(255, 255, 255, 0.05);
+    --color-surface-hover: rgba(255, 255, 255, 0.08);
+    --color-border: rgba(255, 255, 255, 0.1);
+    
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 20px rgba(212, 175, 55, 0.2);
+    
+    /* Typography */
+    --font-display: 'Cairo', sans-serif;
+    --font-body: 'Tajawal', sans-serif;
+    --font-elegant: 'Amiri', serif;
+  }
+  
+  body {
+    @apply bg-game-bg text-white overflow-hidden;
+    font-family: var(--font-body);
+    background: linear-gradient(135deg, #0a0e14 0%, #1a1f2e 50%, #0f1419 100%);
+    background-attachment: fixed;
+  }
+  
+  /* Arabic Typography Enhancement */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+  
+  /* Decorative Background Pattern */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.02) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  /* Geometric Pattern Overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L45 15L30 30L15 15z' fill='%23ffffff' fill-opacity='0.01'/%3E%3C/svg%3E");
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  /* Selection styling */
+  ::selection {
+    background: var(--color-accent-gold);
+    color: var(--color-bg-primary);
+  }
+}
+
+@layer components {
+  /* Enhanced Glass Panel with Arabic aesthetic */
+  .glass-panel {
+    @apply backdrop-blur-xl rounded-2xl shadow-xl relative;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.04) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+      var(--shadow-md),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .glass-panel:hover {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.06) 100%
+    );
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+  }
+  
+  /* Enhanced Decorative Border - Islamic geometric style */
+  .glass-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(212, 175, 55, 0.2),
+      transparent,
+      rgba(16, 185, 129, 0.2)
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .glass-panel:hover::before {
+    opacity: 1;
+  }
+
+  /* Primary Button with Gold Accent */
+  .btn-primary {
+    @apply text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 relative overflow-hidden;
+    background: linear-gradient(135deg, var(--color-accent-emerald) 0%, #059669 100%);
+    box-shadow: 
+      var(--shadow-md),
+      0 0 0 rgba(16, 185, 129, 0.4);
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 
+      var(--shadow-lg),
+      0 0 20px rgba(16, 185, 129, 0.4);
+  }
+  
+  .btn-primary:hover::before {
+    left: 100%;
+  }
+  
+  .btn-primary:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  /* Enhanced Keyboard Keys */
+  .key-btn {
+    @apply flex items-center justify-center rounded-lg font-bold transition-all duration-200 select-none relative;
+    font-family: var(--font-display);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+      var(--shadow-sm),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+  }
+  
+  .key-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  
+  .key-btn:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+  }
+  
+  .key-btn:hover::after {
+    opacity: 1;
+  }
+  
+  .key-btn:active {
+    transform: translateY(0) scale(0.95);
+  }
+  
+  /* Correct Letter - Emerald with glow */
+  .key-btn.correct {
+    background: linear-gradient(135deg, var(--color-accent-emerald) 0%, #059669 100%);
+    border-color: #10b981;
+    box-shadow: 
+      var(--shadow-sm),
+      0 0 15px rgba(16, 185, 129, 0.3);
+    animation: correctPulse 0.6s ease-out;
+  }
+  
+  /* Present Letter - Amber with glow */
+  .key-btn.present {
+    background: linear-gradient(135deg, var(--color-accent-amber) 0%, #d97706 100%);
+    border-color: #f59e0b;
+    box-shadow: 
+      var(--shadow-sm),
+      0 0 15px rgba(245, 158, 11, 0.3);
+    animation: presentPulse 0.6s ease-out;
+  }
+  
+  /* Absent Letter - Dark with subtle border */
+  .key-btn.absent {
+    background: linear-gradient(135deg, rgba(75, 85, 99, 0.5) 0%, rgba(55, 65, 81, 0.5) 100%);
+    border-color: rgba(107, 114, 128, 0.3);
+    color: rgba(255, 255, 255, 0.4);
+  }
+  
+  /* Letter Tile Animations */
+  @keyframes tileFlip {
+    0% {
+      transform: rotateX(0deg);
+    }
+    50% {
+      transform: rotateX(90deg);
+    }
+    100% {
+      transform: rotateX(0deg);
+    }
+  }
+  
+  @keyframes tileShake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+    20%, 40%, 60%, 80% { transform: translateX(4px); }
+  }
+  
+  @keyframes tileBounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10px) scale(1.05); }
+  }
+  
+  @keyframes correctPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+  
+  @keyframes presentPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+  
+  /* Letter Tile Styling */
+  .letter-tile {
+    @apply relative flex items-center justify-center font-bold rounded-lg transition-all duration-300;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    box-shadow: var(--shadow-sm);
+    perspective: 1000px;
+  }
+  
+  .letter-tile.filled {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.06) 100%);
+    animation: tileBounce 0.3s ease;
+  }
+  
+  .letter-tile.correct {
+    background: linear-gradient(135deg, var(--color-accent-emerald) 0%, #059669 100%);
+    border-color: #10b981;
+    box-shadow: 
+      var(--shadow-sm),
+      0 0 20px rgba(16, 185, 129, 0.4);
+    animation: tileFlip 0.6s ease;
+  }
+  
+  .letter-tile.present {
+    background: linear-gradient(135deg, var(--color-accent-amber) 0%, #d97706 100%);
+    border-color: #f59e0b;
+    box-shadow: 
+      var(--shadow-sm),
+      0 0 20px rgba(245, 158, 11, 0.4);
+    animation: tileFlip 0.6s ease;
+  }
+  
+  .letter-tile.absent {
+    background: linear-gradient(135deg, rgba(75, 85, 99, 0.6) 0%, rgba(55, 65, 81, 0.6) 100%);
+    border-color: rgba(107, 114, 128, 0.4);
+    color: rgba(255, 255, 255, 0.5);
+    animation: tileFlip 0.6s ease;
+  }
+  
+  .letter-tile.invalid {
+    animation: tileShake 0.5s ease;
+  }
+  
+  /* Modal Overlay */
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    @apply glass-panel p-8 max-w-md w-full;
+    animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Decorative Header Accent */
+  .header-accent {
+    position: relative;
+  }
+  
+  .header-accent::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--color-accent-gold), transparent);
+    border-radius: 2px;
+  }
+  
+  /* Stats Display Enhancement */
+  .stat-item {
+    @apply text-center p-4 rounded-xl;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+  }
+  
+  .stat-item:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+    border-color: rgba(212, 175, 55, 0.3);
+    transform: translateY(-2px);
+  }
+  
+  /* Scrollbar Enhancement */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(212, 175, 55, 0.5), rgba(212, 175, 55, 0.3));
+    border-radius: 5px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(212, 175, 55, 0.7), rgba(212, 175, 55, 0.5));
+  }
+  
+  /* Loading Spinner */
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  .spinner {
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: var(--color-accent-gold);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+}
+
+/* Utility Classes */
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, var(--color-accent-gold) 0%, var(--color-accent-amber) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  }
+}
