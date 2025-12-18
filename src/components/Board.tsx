@@ -6,6 +6,8 @@ import { letterColors } from "../data/letters-list";
 import { saveGameResult } from "../utils/stats";
 import Row from "./Row";
 import Toast from "./Toast";
+import magicIcon from "./icons/icons8-magic-48.png";
+import speedIcon from "./icons/icons8-speed-48.png";
 
 interface Props {
   wordColors: any[];
@@ -14,9 +16,10 @@ interface Props {
   setGameResult: React.Dispatch<React.SetStateAction<string>>;
   onNewGame: () => void;
   onMagicHelpUsed: () => void;
+  setInfoModalType: React.Dispatch<React.SetStateAction<"settings" | "menu" | null>>;
 }
 
-const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewGame, onMagicHelpUsed }: Props) => {
+const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewGame, onMagicHelpUsed, setInfoModalType }: Props) => {
   const rightWord = useMemo(() => getWordOfTheDay(), []);
 
   let wordIndexRef = useRef(0);
@@ -286,28 +289,38 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
   return (
     <div className="flex flex-col items-center w-full max-w-md mx-auto">
       {/* Tiles Grid */}
-      <div className="grid grid-rows-6 gap-1.5 mb-6" dir="rtl">
+      <div className="grid grid-rows-6 gap-1.5 mb-8" dir="rtl">
         {[0, 1, 2, 3, 4, 5].map((row) => (
           <Row key={row} word={boardWords[row]} wordColors={wordColors[row] ?? []} error={isErrors[row] ?? false} />
         ))}
       </div>
 
       {/* Action Buttons */}
-      <div className="flex justify-center my-6 w-full gap-4" dir="rtl">
+      <div className="flex justify-center items-center gap-10 mb-8 w-full" dir="rtl">
         <button
-          className="cursor-pointer flex items-center justify-center rounded-lg px-6 py-2.5 text-sm font-bold shadow-md transition-all duration-150 bg-brand-sand text-white hover:bg-brand-sand/90 active:scale-95"
+          className="transition-all duration-200 hover:scale-110 active:scale-95"
           onClick={useMagicHelp}
+          title="مساعدة سحرية"
         >
-          <span className="ml-2">🪄</span>
-          <span>مساعدة سحرية</span>
+          <img src={magicIcon} alt="Magic" className="w-10 h-10" />
         </button>
 
         <button
-          className="cursor-pointer flex items-center justify-center rounded-lg px-6 py-2.5 text-sm font-bold shadow-md transition-all duration-150 bg-brand-muted-blue text-white hover:bg-brand-muted-blue/90 active:scale-95"
-          onClick={useAccelerate}
+          className="transition-all duration-200 hover:scale-110 active:scale-95 text-brand-charcoal/30 hover:text-brand-charcoal"
+          onClick={() => setInfoModalType("menu")}
+          title="معلومات"
         >
-          <span className="ml-2">🏎️</span>
-          <span>تسريع</span>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </button>
+
+        <button
+          className="transition-all duration-200 hover:scale-110 active:scale-95"
+          onClick={useAccelerate}
+          title="تسريع"
+        >
+          <img src={speedIcon} alt="Speed" className="w-10 h-10" />
         </button>
       </div>
 

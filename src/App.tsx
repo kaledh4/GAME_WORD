@@ -39,6 +39,7 @@ function App() {
           setGameResult={setGameResult}
           onNewGame={handleNewGame}
           onMagicHelpUsed={() => setUsedMagicHelp(true)}
+          setInfoModalType={setInfoModalType}
         />
       </div>
 
