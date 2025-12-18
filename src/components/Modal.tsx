@@ -20,7 +20,7 @@ const Modal = ({ gameResult, data, closeModal, setCloseModal, onNewGame, usedMag
   const [toastData, setToastData] = useState<Array<any>>([]);
   const [stats, setStats] = useState<GameStats | null>(null);
 
-  const { letterAbsent, letterExist, letterRight } = letterColors;
+  const { letterAbsent, letterExist } = letterColors;
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     setCloseModal(true);
