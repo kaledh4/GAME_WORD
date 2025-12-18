@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Toast from "./Toast";
 import Close from "./icons/Close";
 import Share from "./icons/Share";
+import magicIcon from "./icons/icons8-magic-48.png";
 import { letterColors } from "../data/letters-list";
 import { day } from "../data/words-list";
 import { getStats, GameStats } from "../utils/stats";
@@ -117,7 +118,9 @@ const Modal = ({ gameResult, data, closeModal, setCloseModal, onNewGame, usedMag
           {gameResult !== "idle" && (
             <div className="flex flex-col w-full items-center gap-3">
               {usedMagicHelp && (
-                <p className="text-sm text-brand-charcoal/60 mb-1 bg-brand-sand/10 px-3 py-1 rounded-full">تم استخدام المساعدة السحرية 🪄</p>
+                <p className="text-sm text-brand-charcoal/60 mb-1 bg-brand-sand/10 px-3 py-1 rounded-full flex items-center">
+                  تم استخدام المساعدة السحرية <img src={magicIcon} alt="Magic" className="w-4 h-4 mr-1" />
+                </p>
               )}
               <div className="flex w-full gap-3">
                 <button onClick={handleShare} className="flex-1 flex px-4 py-4 rounded-xl bg-brand-sage hover:opacity-90 text-white font-bold justify-center shadow-lg transition-all items-center">

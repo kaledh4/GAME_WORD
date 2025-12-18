@@ -1,4 +1,6 @@
 import Close from "./icons/Close";
+import magicIcon from "./icons/icons8-magic-48.png";
+import speedIcon from "./icons/icons8-speed-48.png";
 
 interface Props {
     isOpen: boolean;
@@ -46,7 +48,7 @@ const InfoModal = ({ isOpen, onClose, type }: Props) => {
 
                     <div className="bg-brand-sage/10 p-6 rounded-2xl mb-4 w-full">
                         <h3 className="font-bold text-brand-sage mb-3 flex items-center justify-center">
-                            <span className="ml-2">🪄</span> المساعدة السحرية
+                            <img src={magicIcon} alt="Magic" className="w-6 h-6 ml-2" /> المساعدة السحرية
                         </h3>
                         <p className="text-brand-charcoal/80 leading-relaxed text-sm">
                             عندما تشعر بالحيرة، يمكنك الضغط على زر المساعدة السحرية. ستقوم اللعبة تلقائياً باختيار مكان لم تكتشفه بعد وتضع فيه الحرف الصحيح المناسب له.
@@ -58,7 +60,7 @@ const InfoModal = ({ isOpen, onClose, type }: Props) => {
 
                     <div className="bg-brand-muted-blue/10 p-6 rounded-2xl mb-8 w-full">
                         <h3 className="font-bold text-brand-muted-blue mb-3 flex items-center justify-center">
-                            <span className="ml-2">🏎️</span> ميزة التسريع
+                            <img src={speedIcon} alt="Speed" className="w-6 h-6 ml-2" /> ميزة التسريع
                         </h3>
                         <p className="text-brand-charcoal/80 leading-relaxed text-sm">
                             تقوم ميزة التسريع بتجربة 4 كلمات استراتيجية تلقائياً لتوفير الوقت والجهد في بداية اللعبة.

@@ -157,7 +157,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
     setKeyboardState(newKeyboardState);
     wordIndexRef.current = stopAt;
 
-    setToastData((prev) => [...prev, "تم التسريع! 🏎️"]);
+    setToastData((prev) => [...prev, "تم التسريع!"]);
   };
 
   const handleEnter = (): void => {
