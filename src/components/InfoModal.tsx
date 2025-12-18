@@ -68,14 +68,14 @@ const InfoModal = ({ isOpen, onClose, type }: Props) => {
     };
 
     return (
-        <>
+        <div
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60] flex items-center justify-center p-4 transition-opacity duration-300"
+            onClick={onClose}
+        >
             <div
-                className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60] transition-opacity duration-300"
-                onClick={onClose}
-            ></div>
-            <div
-                className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-sm bg-white rounded-3xl shadow-2xl z-[70] p-8 animate-slide-up"
+                className="w-full max-w-sm bg-white rounded-3xl shadow-2xl z-[70] p-8 animate-slide-up relative"
                 dir="rtl"
+                onClick={(e) => e.stopPropagation()}
             >
                 <button
                     className="absolute top-6 left-6 text-brand-charcoal/20 hover:text-brand-charcoal transition-colors"
@@ -85,7 +85,7 @@ const InfoModal = ({ isOpen, onClose, type }: Props) => {
                 </button>
                 {getContent()}
             </div>
-        </>
+        </div>
     );
 };
 

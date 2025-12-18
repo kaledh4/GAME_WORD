@@ -7,119 +7,97 @@
 @layer base {
   :root {
     /* Premium Color Palette - Minimalist & Elegant */
-    --color-bg-primary: #f2f0eb;
+    --color-bg-primary: #f2e5cb;
     --color-bg-secondary: #e8e6e1;
     --color-bg-tertiary: #faf9f6;
-    
+
     --color-brand-charcoal: #4a4a4a;
     --color-brand-taupe: #d1ccc0;
     --color-brand-sage: #8a9a5b;
     --color-brand-sand: #c2b280;
     --color-brand-red: #922b21;
     --color-brand-blue: #2c3e50;
-    
+
     --color-surface: rgba(74, 74, 74, 0.05);
     --color-surface-hover: rgba(74, 74, 74, 0.08);
     --color-border: rgba(74, 74, 74, 0.1);
-    
+
     --shadow-sm: 0 2px 8px rgba(74, 74, 74, 0.1);
     --shadow-md: 0 4px 16px rgba(74, 74, 74, 0.15);
     --shadow-lg: 0 8px 32px rgba(74, 74, 74, 0.2);
     --shadow-glow: 0 0 20px rgba(194, 178, 128, 0.2);
-    
+
     /* Typography */
     --font-display: 'Cairo', sans-serif;
     --font-body: 'Tajawal', sans-serif;
     --font-elegant: 'Amiri', serif;
   }
-  
+
   body {
-    background: radial-gradient(circle at center, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+    background: #f2e5cb;
+    background: linear-gradient(90deg, rgba(242, 229, 203, 1) 0%, rgba(232, 230, 225, 1) 50%, rgba(250, 249, 246, 1) 100%);
     @apply text-brand-charcoal overflow-hidden min-h-screen;
     font-family: var(--font-body);
   }
-  
+
   /* Arabic Typography Enhancement */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display);
     font-weight: 700;
     letter-spacing: 0.01em;
   }
-  
+
   .safe-top {
     padding-top: env(safe-area-inset-top);
   }
-  
+
   /* Selection styling */
   ::selection {
-    background: var(--color-accent-gold);
+    background: var(--color-brand-sand);
     color: var(--color-bg-primary);
   }
 }
 
 @layer components {
+
   /* Enhanced Glass Panel with Arabic aesthetic */
   .glass-panel {
     @apply backdrop-blur-xl rounded-2xl shadow-xl relative;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.8) 0%,
-      rgba(255, 255, 255, 0.4) 100%
-    );
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.8) 0%,
+        rgba(255, 255, 255, 0.4) 100%);
     border: 1px solid rgba(74, 74, 74, 0.1);
-    box-shadow: 
+    box-shadow:
       var(--shadow-md),
       inset 0 1px 0 rgba(255, 255, 255, 0.5);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
+
   .glass-panel:hover {
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.9) 0%,
-      rgba(255, 255, 255, 0.5) 100%
-    );
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(255, 255, 255, 0.5) 100%);
     border-color: rgba(74, 74, 74, 0.15);
     transform: translateY(-1px);
-  }
-  
-  /* Enhanced Decorative Border - Islamic geometric style */
-  .glass-panel::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(
-      135deg,
-      rgba(212, 175, 55, 0.2),
-      transparent,
-      rgba(16, 185, 129, 0.2)
-    );
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .glass-panel:hover::before {
-    opacity: 1;
   }
 
   /* Primary Button with Charcoal Accent */
   .btn-primary {
     @apply text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 relative overflow-hidden;
     background: linear-gradient(135deg, var(--color-brand-charcoal) 0%, var(--color-brand-blue) 100%);
-    box-shadow: 
+    box-shadow:
       var(--shadow-md),
       0 0 0 rgba(44, 62, 80, 0.4);
     font-family: var(--font-display);
     font-weight: 700;
     letter-spacing: 0.02em;
   }
-  
+
   .btn-primary::before {
     content: '';
     position: absolute;
@@ -130,18 +108,18 @@
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: left 0.5s ease;
   }
-  
+
   .btn-primary:hover {
     transform: translateY(-2px) scale(1.02);
-    box-shadow: 
+    box-shadow:
       var(--shadow-lg),
       0 0 20px rgba(16, 185, 129, 0.4);
   }
-  
+
   .btn-primary:hover::before {
     left: 100%;
   }
-  
+
   .btn-primary:active {
     transform: translateY(0) scale(0.98);
   }
@@ -152,13 +130,13 @@
     font-family: var(--font-display);
     background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
     border: 1px solid rgba(74, 74, 74, 0.1);
-    box-shadow: 
+    box-shadow:
       var(--shadow-sm),
       inset 0 1px 0 rgba(255, 255, 255, 0.8);
     cursor: pointer;
     color: var(--color-brand-charcoal);
   }
-  
+
   .key-btn::after {
     content: '';
     position: absolute;
@@ -168,84 +146,124 @@
     opacity: 0;
     transition: opacity 0.2s ease;
   }
-  
+
   .key-btn:hover {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
     border-color: rgba(255, 255, 255, 0.2);
     transform: translateY(-1px);
   }
-  
+
   .key-btn:hover::after {
     opacity: 1;
   }
-  
+
   .key-btn:active {
     transform: translateY(0) scale(0.95);
   }
-  
+
   /* Correct Letter - Sage with glow */
   .key-btn.correct {
     background: linear-gradient(135deg, var(--color-brand-sage) 0%, #7a8a4b 100%);
     border-color: var(--color-brand-sage);
-    box-shadow: 
+    box-shadow:
       var(--shadow-sm),
       0 0 15px rgba(138, 154, 91, 0.3);
     animation: correctPulse 0.6s ease-out;
     color: white;
   }
-  
+
   /* Present Letter - Sand with glow */
   .key-btn.present {
     background: linear-gradient(135deg, var(--color-brand-sand) 0%, #b2a270 100%);
     border-color: var(--color-brand-sand);
-    box-shadow: 
+    box-shadow:
       var(--shadow-sm),
       0 0 15px rgba(194, 178, 128, 0.3);
     animation: presentPulse 0.6s ease-out;
     color: white;
   }
-  
+
   /* Absent Letter - Muted with subtle border */
   .key-btn.absent {
     background: linear-gradient(135deg, #b0ada5 0%, #a09d95 100%);
     border-color: rgba(74, 74, 74, 0.1);
     color: rgba(255, 255, 255, 0.8);
   }
-  
+
   /* Letter Tile Animations */
   @keyframes tileFlip {
     0% {
       transform: rotateX(0deg);
     }
+
     50% {
       transform: rotateX(90deg);
     }
+
     100% {
       transform: rotateX(0deg);
     }
   }
-  
+
   @keyframes tileShake {
-    0%, 100% { transform: translateX(0); }
-    10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
-    20%, 40%, 60%, 80% { transform: translateX(4px); }
+
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+      transform: translateX(-4px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+      transform: translateX(4px);
+    }
   }
-  
+
   @keyframes tileBounce {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-10px) scale(1.05); }
+
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+    }
+
+    50% {
+      transform: translateY(-10px) scale(1.05);
+    }
   }
-  
+
   @keyframes correctPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.08); }
+
+    0%,
+    100% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.08);
+    }
   }
-  
+
   @keyframes presentPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.08); }
+
+    0%,
+    100% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.08);
+    }
   }
-  
+
   /* Letter Tile Styling */
   .letter-tile {
     @apply relative flex items-center justify-center font-bold rounded-lg transition-all duration-300;
@@ -258,78 +276,84 @@
     perspective: 1000px;
     color: var(--color-brand-charcoal);
   }
-  
+
   .letter-tile.filled {
     border-color: var(--color-brand-charcoal);
     background: #ffffff;
     animation: tileBounce 0.3s ease;
   }
-  
+
   .letter-tile.correct {
     background: linear-gradient(135deg, var(--color-brand-sage) 0%, #7a8a4b 100%);
     border-color: var(--color-brand-sage);
-    box-shadow: 
+    box-shadow:
       var(--shadow-sm),
       0 0 20px rgba(138, 154, 91, 0.4);
     animation: tileFlip 0.6s ease;
     color: white;
   }
-  
+
   .letter-tile.present {
     background: linear-gradient(135deg, var(--color-brand-sand) 0%, #b2a270 100%);
     border-color: var(--color-brand-sand);
-    box-shadow: 
+    box-shadow:
       var(--shadow-sm),
       0 0 20px rgba(194, 178, 128, 0.4);
     animation: tileFlip 0.6s ease;
     color: white;
   }
-  
+
   .letter-tile.absent {
     background: linear-gradient(135deg, #b0ada5 0%, #a09d95 100%);
     border-color: rgba(74, 74, 74, 0.1);
     color: white;
     animation: tileFlip 0.6s ease;
   }
-  
+
   .letter-tile.invalid {
     animation: tileShake 0.5s ease;
   }
-  
+
   /* Modal Overlay */
   .modal-overlay {
     @apply fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4;
     animation: fadeIn 0.3s ease;
   }
-  
+
   @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
   }
-  
+
   /* Modal Content */
   .modal-content {
     @apply glass-panel p-8 max-w-md w-full;
     animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: var(--shadow-lg);
   }
-  
+
   @keyframes slideUp {
     from {
       opacity: 0;
       transform: translateY(20px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
-  
+
   /* Decorative Header Accent */
   .header-accent {
     position: relative;
   }
-  
+
   .header-accent::after {
     content: '';
     position: absolute;
@@ -338,68 +362,21 @@
     transform: translateX(50%);
     width: 60px;
     height: 3px;
-    background: linear-gradient(90deg, transparent, var(--color-accent-gold), transparent);
+    background: linear-gradient(90deg, transparent, var(--color-brand-sand), transparent);
     border-radius: 2px;
-  }
-  
-  /* Stats Display Enhancement */
-  .stat-item {
-    @apply text-center p-4 rounded-xl;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: all 0.3s ease;
-  }
-  
-  .stat-item:hover {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
-    border-color: rgba(212, 175, 55, 0.3);
-    transform: translateY(-2px);
-  }
-  
-  /* Scrollbar Enhancement */
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, rgba(212, 175, 55, 0.5), rgba(212, 175, 55, 0.3));
-    border-radius: 5px;
-    border: 2px solid rgba(0, 0, 0, 0.2);
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, rgba(212, 175, 55, 0.7), rgba(212, 175, 55, 0.5));
-  }
-  
-  /* Loading Spinner */
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
-  
-  .spinner {
-    border: 3px solid rgba(255, 255, 255, 0.1);
-    border-top-color: var(--color-accent-gold);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
   }
 }
 
 /* Utility Classes */
 @layer utilities {
   .text-gradient {
-    background: linear-gradient(135deg, var(--color-accent-gold) 0%, var(--color-accent-amber) 100%);
+    background: linear-gradient(135deg, var(--color-brand-sand) 0%, #b2a270 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  
+
   .text-glow {
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    text-shadow: 0 0 10px rgba(194, 178, 128, 0.5);
   }
 }
