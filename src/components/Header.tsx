@@ -3,15 +3,16 @@ import Statistics from "./icons/Statistics";
 interface Props {
   closeModal: boolean;
   setCloseModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setInfoModalType: React.Dispatch<React.SetStateAction<"settings" | "menu" | null>>;
 }
 
-const Header = ({ closeModal, setCloseModal }: Props) => {
+const Header = ({ closeModal, setCloseModal, setInfoModalType }: Props) => {
   return (
     <header className="flex items-center justify-between w-full max-w-md mx-auto px-4 py-3" dir="rtl">
       <div className="flex gap-2">
         <button
           className="p-1 rounded hover:bg-brand-charcoal/5 transition-colors text-brand-charcoal"
-          onClick={() => { }}
+          onClick={() => setInfoModalType("menu")}
           aria-label="Menu"
         >
           {/* Placeholder for Menu Icon */}
@@ -21,7 +22,7 @@ const Header = ({ closeModal, setCloseModal }: Props) => {
         </button>
         <button
           className="p-1 rounded hover:bg-brand-charcoal/5 transition-colors text-brand-charcoal"
-          onClick={() => { }}
+          onClick={() => window.open("https://github.com/kaledh4/GAME_WORD", "_blank")}
           aria-label="Help"
         >
           {/* Placeholder for Help Icon */}
@@ -48,7 +49,7 @@ const Header = ({ closeModal, setCloseModal }: Props) => {
         </button>
         <button
           className="p-1 rounded hover:bg-brand-charcoal/5 transition-colors text-brand-charcoal"
-          onClick={() => { }}
+          onClick={() => setInfoModalType("settings")}
           aria-label="Settings"
         >
           {/* Placeholder for Settings Icon */}
