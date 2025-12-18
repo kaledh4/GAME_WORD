@@ -82,7 +82,7 @@ const Modal = ({ gameResult, data, closeModal, setCloseModal, onNewGame, usedMag
               })
             ) : (
               <div className="flex flex-col items-center justify-center w-full py-6 animate-fade-in-up">
-                <div className="mb-2 text-3xl">📊</div>
+                <div className="mb-2 text-3xl">🌎</div>
                 <h2 className="text-lg font-semibold mb-1">إحصائياتك</h2>
                 <p className="text-sm text-gray-200">لم تلعب أي لعبة بعد</p>
                 <p className="text-xs text-gray-400 mt-1">ابدأ اللعب لتظهر إحصائياتك هنا</p>
