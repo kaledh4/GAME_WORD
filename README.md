@@ -1,223 +1,63 @@
-# خمن الكلمة 3.0 - Enhanced Visual Design
+# كلمة - خمن الكلمة 3.0 (Premium Edition)
 
-## 🎨 Visual Improvements Overview
+لعبة تخمين كلمات عربية يومية بتصميم عصري وفاخر، تركز على جمالية اللغة العربية وتجربة المستخدم السلسة.
 
-Your Arabic Wordle has been enhanced with a distinctive, refined aesthetic that celebrates Arabic design while maintaining all original functionality.
+## 🎨 نظرة عامة على التصميم الجديد (Premium UI/UX)
 
-### Key Visual Enhancements
+تم إعادة تصميم اللعبة بالكامل لتعتمد نمطاً بصرياً يجمع بين البساطة والفخامة، مستوحى من التصاميم الحديثة والراقية.
 
-#### 1. **Typography & Arabic-First Design**
-- **Display Font**: Cairo - Bold, modern Arabic font for headings and key UI elements
-- **Body Font**: Tajawal - Clean, readable font for body text and game content
-- **Elegant Font**: Amiri - Traditional Arabic serif for decorative elements
-- Better letter spacing and font weights optimized for Arabic characters
+### 1. الهوية البصرية والألوان
+- **الخلفية**: تدرج لوني خطي (Linear Gradient) يبدأ من الكريمي الدافئ وينتهي بالأبيض الهادئ، مما يمنح شعوراً بالراحة والاتساع.
+- **لوحة الألوان**:
+  - **الفحمي (Charcoal)**: للخطوط والعناصر الأساسية لضمان وضوح عالٍ.
+  - **الأخضر المريمي (Sage Green)**: للحروف الصحيحة.
+  - **الذهبي الرملي (Sand Gold)**: للحروف الموجودة في مكان خاطئ.
+  - **الرمادي الدافئ (Taupe)**: للحروف غير الموجودة.
+- **التأثيرات**: استخدام تأثير الزجاج (Glassmorphism) في النوافذ المنبثقة مع ظلال ناعمة تمنح عمقاً بصرياً.
 
-#### 2. **Color Palette - Rich & Refined**
-- **Background**: Deep gradient from dark navy to charcoal (not flat black)
-- **Accent Colors**:
-  - 🟢 Emerald Green (#10b981) - Correct letters with glow effect
-  - 🟠 Amber (#f59e0b) - Present letters with warm glow
-  - 🟡 Gold (#d4af37) - Decorative accents and highlights
-- **Glass Morphism**: Frosted glass panels with subtle borders and inner highlights
+### 2. الخطوط العربية (Typography)
+- **Cairo**: للعنوان الرئيسي والعناصر البارزة.
+- **Tajawal**: للنصوص الأساسية ومحتوى اللعبة لضمان سهولة القراءة.
+- **Amiri**: للمسات الجمالية والزخرفية.
 
-#### 3. **Visual Depth & Atmosphere**
-- Multi-layered background with radial gradients
-- Geometric pattern overlay (subtle Islamic-inspired shapes)
-- Animated ambient light orbs that pulse slowly
-- Enhanced shadows with multiple layers for depth
-- Glow effects on correct/present letter states
+## 🚀 الميزات الجديدة والمطورة
 
-#### 4. **Animations & Micro-interactions**
-- **Letter Tiles**:
-  - Bounce animation when typing
-  - Flip animation when revealing (3D effect)
-  - Shake animation for invalid words
-  - Glow effects for correct/present states
-- **Keyboard Keys**:
-  - Smooth hover states with lift effect
-  - Radial highlight on hover
-  - Press feedback with scale
-  - Shimmer effect on primary buttons
-- **Transitions**: All using cubic-bezier easing for natural motion
+### 1. نظام الإحصائيات الدائم (Persistent Stats)
+تم إضافة نظام إحصائيات متطور يحفظ تقدم اللاعب تلقائياً في المتصفح (LocalStorage):
+- **إجمالي الألعاب**: تتبع عدد المرات التي لعبت فيها.
+- **نسبة الفوز**: حساب دقيق لنسبة نجاحك.
+- **سلسلة الانتصارات**: تتبع السلسلة الحالية وأفضل سلسلة حققتها (Max Streak).
+- **توزيع التخمينات**: رسم بياني يوضح في أي محاولة تنجح غالباً.
 
-#### 5. **Glass Morphism Effects**
-- Backdrop blur for depth
-- Gradient borders that animate on hover
-- Inner light highlights
-- Layered transparency for sophisticated look
+### 2. المساعدة السحرية (Magic Help) ✨
+ميزة فريدة تساعدك عندما تشعر بالحيرة:
+- تقوم اللعبة تلقائياً بالكشف عن حرف صحيح في مكان لم تكتشفه بعد.
+- **ملاحظة**: استخدام هذه الميزة يؤثر على نتيجتك النهائية في الجولة.
 
-#### 6. **Enhanced Components**
-- **Header**: Decorative underline accent with gold gradient
-- **Buttons**: Gradient backgrounds with hover glow and shimmer
-- **Modal**: Smooth fade-in and slide-up animation
-- **Stats**: Hoverable cards with subtle lift
-- **Scrollbar**: Custom styled with gold gradient
+### 3. نوافذ المعلومات (Info Modals)
+- **عن اللعبة**: شرح مبسط للقواعد مع اقتراح كلمات ذكية للبدء بها (ا ي م ن، س ل و ك، ت ه د ف، ب ر ق ع).
+- **المساعدة السحرية**: شرح مفصل لكيفية عمل الميزة.
 
-### Design Philosophy
+## 🛠 التقنيات المستخدمة
+- **React**: لبناء الواجهات التفاعلية.
+- **Tailwind CSS**: للتصميم العصري والمتجاوب.
+- **LocalStorage API**: لحفظ الإحصائيات والتقدم.
+- **GitHub Pages**: للاستضافة والنشر التلقائي.
 
-The enhanced design follows these principles:
+## 🎮 كيف تلعب؟
+1. حاول تخمين الكلمة المكونة من 4 حروف في 6 محاولات.
+2. لون الحرف يتغير ليخبرك بمدى قربه من الكلمة الصحيحة:
+   - **الأخضر**: الحرف صحيح وفي مكانه الصحيح.
+   - **الذهبي**: الحرف موجود في الكلمة ولكن في مكان آخر.
+   - **الرمادي**: الحرف غير موجود في الكلمة.
 
-1. **Cultural Authenticity**: Colors and patterns inspired by traditional Arabic design
-2. **Visual Hierarchy**: Clear distinction between interactive and decorative elements
-3. **Smooth Motion**: All animations use natural easing curves
-4. **Accessibility**: High contrast maintained, readable fonts
-5. **Premium Feel**: Refined details like glows, gradients, and shadows
+## � المطور
+تم التطوير والتحسين بواسطة **MUXD22**.
 
-## 📦 Files Included
-
-1. `index.html` - Enhanced with better Arabic font imports
-2. `index.css` - Complete visual redesign with:
-   - CSS custom properties for easy theming
-   - Glass morphism components
-   - Smooth animations and transitions
-   - Enhanced keyboard and tile styling
-3. `App.tsx` - Added animated background elements
-4. `tailwind.config.js` - Extended with custom colors and design tokens
-
-## 🚀 Implementation Instructions
-
-### Step 1: Replace Core Files
-Copy the content from these files to your project:
-- `src/index.css` → Replace with new `index.css`
-- `public/index.html` → Replace with new `index.html`
-- `src/App.tsx` → Replace with new `App.tsx`
-- `tailwind.config.js` → Replace with new config
-
-### Step 2: Install Font Dependencies (Already Done)
-The fonts are loaded via Google Fonts CDN in the HTML file:
-- Cairo (Display)
-- Tajawal (Body)
-- Amiri (Elegant/Decorative)
-
-### Step 3: Component Classes
-Make sure your components use these enhanced classes:
-
-**Letter Tiles:**
-```tsx
-className="letter-tile"
-className="letter-tile filled"
-className="letter-tile correct"
-className="letter-tile present"
-className="letter-tile absent"
-className="letter-tile invalid"
-```
-
-**Keyboard Keys:**
-```tsx
-className="key-btn"
-className="key-btn correct"
-className="key-btn present"
-className="key-btn absent"
-```
-
-**Panels:**
-```tsx
-className="glass-panel"
-```
-
-**Buttons:**
-```tsx
-className="btn-primary"
-```
-
-### Step 4: No Breaking Changes
-All original class names are preserved. The new CSS enhances existing classes without breaking functionality.
-
-## 🎯 What's Maintained
-
-✅ All game logic and functionality
-✅ RTL (Right-to-Left) layout for Arabic
-✅ Responsive design
-✅ Accessibility features
-✅ Touch interactions
-✅ Modal system
-✅ Stats tracking
-✅ All event handlers
-
-## 🎨 Customization Options
-
-You can easily customize the design by modifying CSS custom properties in `index.css`:
-
-```css
-:root {
-  --color-accent-gold: #d4af37;      /* Change gold accent */
-  --color-accent-emerald: #10b981;   /* Change correct color */
-  --color-accent-amber: #f59e0b;     /* Change present color */
-  /* ... more variables */
-}
-```
-
-## 🌟 Visual Effects Breakdown
-
-### Background Layers (Bottom to Top)
-1. Base gradient (dark blue to charcoal)
-2. Radial gradient overlays (colored light sources)
-3. Geometric pattern (Islamic-inspired)
-4. Animated orbs (pulsing ambient light)
-
-### Interactive States
-- **Hover**: Lift effect + border glow + background brighten
-- **Active**: Scale down + immediate feedback
-- **Disabled**: Reduced opacity + no hover effects
-
-### Animation Timing
-- Quick interactions: 150-200ms
-- State changes: 300-400ms
-- Background animations: 2-3s (slow pulse)
-- Flip animations: 600ms
-
-## 📱 Responsive Behavior
-
-All enhancements work seamlessly across:
-- Desktop (full effects)
-- Tablet (optimized)
-- Mobile (touch-optimized, safe areas respected)
-
-## 🔧 Technical Details
-
-- **No JavaScript changes required** - All visual enhancements are CSS-based
-- **Performance optimized** - Hardware-accelerated animations
-- **Cross-browser compatible** - Modern CSS with fallbacks
-- **RTL-first** - All designs respect Arabic text direction
-
-## 💡 Tips for Best Results
-
-1. Test on dark mode displays for full effect
-2. The glow effects look best on OLED screens
-3. Animations are optimized for 60fps
-4. Consider adding haptic feedback on mobile for tile interactions
-
-## 🔄 Workflow and Deployment
-
-This project uses GitHub Actions for continuous deployment:
-
-1. **Branch Structure**:
-   - `main` - Primary development and production branch
-   - All changes should be pushed to `main` for automatic deployment
-
-2. **Deployment Process**:
-   - Push to `main` triggers GitHub Actions workflow
-   - Automatically builds and deploys to GitHub Pages
-   - Live site: https://kaledh4.github.io/GAME_WORD/
-
-3. **Local Development**:
-   ```bash
-   # Install dependencies
-   npm install
-   
-   # Start development server
-   npm start
-   
-   # Build for production
-   npm run build
-   ```
-
-## 👤 Configuration
-
-- GitHub Username: `kaledh4`
-- Contact Email: `kaled.h4@gmail.com`
+## 🔄 النشر والتطوير
+يتم تحديث الموقع تلقائياً عبر **GitHub Actions** عند كل عملية دفع (Push) للمستودع.
+- **رابط اللعبة**: [https://kaledh4.github.io/GAME_WORD/](https://kaledh4.github.io/GAME_WORD/)
 
 ---
-
-Made with ❤️ for the Arabic language
 صُنع بـ ❤️ للغة العربية
+Made with ❤️ for the Arabic language
