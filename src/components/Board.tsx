@@ -3,6 +3,7 @@ import { compare } from "../utils/compare";
 import { wordsList, getWordOfTheDay } from "../data/words-list";
 import { keyboardRows } from "../data/keyboard-layout";
 import { letterColors } from "../data/letters-list";
+import { saveGameResult } from "../utils/stats";
 import Row from "./Row";
 import Toast from "./Toast";
 
@@ -201,6 +202,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
   useEffect(() => {
     if (boardWords[wordIndexRef.current - 1]?.join("") === rightWord) {
       setToastData(["أحسنت !"]);
+      saveGameResult(true, wordIndexRef.current);
       setTimeout(() => {
         setCloseModal(false);
         setGameResult("win");
@@ -210,6 +212,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
 
   useEffect(() => {
     if (wordIndexRef.current === 6 && typedWord !== rightWord) {
+      saveGameResult(false, 6);
       setTimeout(() => {
         setToastData([rightWord]);
       }, 1200);
