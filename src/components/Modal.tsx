@@ -50,19 +50,18 @@ const Modal = ({ gameResult, data, closeModal, setCloseModal, onNewGame, usedMag
         onClick={handleClick}
       ></div>
       <div
-        className={`z-50 fixed ${dsiplay} flex-col justify-start items-center w-full max-w-md mx-auto bottom-0 left-0 right-0 h-auto py-6 bg-game-bg border-t border-tile-border rounded-t-2xl shadow-2xl p-4 text-white ${
-          closeModal ? "animate-slide-out" : "animate-slide-in"
-        }`}
+        className={`z-50 fixed ${dsiplay} flex-col justify-start items-center w-full max-w-md mx-auto bottom-0 left-0 right-0 h-auto py-6 bg-white border-t border-brand-charcoal/10 rounded-t-3xl shadow-2xl p-6 text-brand-charcoal ${closeModal ? "animate-slide-out" : "animate-slide-in"
+          }`}
       >
-        <div className="cursor-pointer self-start w-100 mb-7" onClick={handleClick}>
+        <div className="cursor-pointer self-start mb-6 text-brand-charcoal/40 hover:text-brand-charcoal transition-colors" onClick={handleClick}>
           <Close />
         </div>
         <div className="w-full flex flex-col justify-center items-center">
-          <h1 className="text-xl font-bold mb-1">توزيع التخمينات</h1>
+          <h1 className="text-2xl font-bold mb-2 text-brand-charcoal">إحصائيات الجولة</h1>
           {usedMagicHelp && gameResult !== "idle" && (
-            <p className="text-xs text-gray-300 mb-3">تم استخدام المساعدة السحرية - لا توجد درجة كاملة في هذه الجولة</p>
+            <p className="text-sm text-brand-charcoal/60 mb-4 bg-brand-sand/10 px-3 py-1 rounded-full">تم استخدام المساعدة السحرية ✨</p>
           )}
-          <div className="mt-3 w-full flex flex-col justify-center items-center">
+          <div className="mt-4 w-full flex flex-col justify-center items-center">
             {gameResult !== "idle" ? (
               data?.map((wordColors, index) => {
                 let bool = false;
@@ -70,33 +69,33 @@ const Modal = ({ gameResult, data, closeModal, setCloseModal, onNewGame, usedMag
                 wordColors.forEach((letterColor: string) => {
                   if (letterColor === letterRight) letterIndex++;
                 });
-                bool = letterIndex === 5 ? true : false;
+                bool = letterIndex === 4 ? true : false; // Word length is 4
                 return (
-                  <div className="flex flex-row-reverse w-full items-center my-[2px]" key={index}>
-                    {index + 1}
-                    <div className={`ml-2 font-bold px-2 ${bool && "w-full"} flex flex-row-reverse text-white ${bool ? letterRight : letterAbsent}`}>
+                  <div className="flex flex-row-reverse w-full items-center my-1" key={index}>
+                    <span className="w-4 text-xs opacity-40">{index + 1}</span>
+                    <div className={`mr-2 font-bold px-3 py-1 rounded ${bool && "w-full"} flex flex-row-reverse text-white ${bool ? "bg-brand-sage" : "bg-brand-taupe"}`}>
                       {bool ? "1" : "0"}
                     </div>
                   </div>
                 );
               })
             ) : (
-              <div className="flex flex-col items-center justify-center w-full py-6 animate-fade-in-up">
-                <div className="mb-2 text-3xl">🌎</div>
-                <h2 className="text-lg font-semibold mb-1">إحصائياتك</h2>
-                <p className="text-sm text-gray-200">لم تلعب أي لعبة بعد</p>
-                <p className="text-xs text-gray-400 mt-1">ابدأ اللعب لتظهر إحصائياتك هنا</p>
+              <div className="flex flex-col items-center justify-center w-full py-8">
+                <div className="mb-4 text-5xl">🌎</div>
+                <h2 className="text-xl font-bold mb-2">إحصائياتك</h2>
+                <p className="text-brand-charcoal/60">لم تلعب أي لعبة بعد</p>
+                <p className="text-xs text-brand-charcoal/40 mt-2">ابدأ اللعب لتظهر إحصائياتك هنا</p>
               </div>
             )}
           </div>
           {gameResult !== "idle" ? (
-            <div className="flex flex-col w-full items-center">
-              <button onClick={handleShare} className={`mt-5 mb-2 flex px-8 py-4 rounded-md ${letterRight} hover:opacity-90 text-white font-bold w-full justify-center shadow-lg transition-all`}>
+            <div className="flex flex-col w-full items-center mt-6 gap-3">
+              <button onClick={handleShare} className="flex px-8 py-4 rounded-xl bg-brand-sage hover:opacity-90 text-white font-bold w-full justify-center shadow-lg transition-all items-center">
                 <Share />
                 <span className="mr-2">شارك نتيجتك</span>
                 <Toast toastData={toastData} setToastData={setToastData} />
               </button>
-              <button onClick={onNewGame} className="mt-2 mb-5 flex px-8 py-4 rounded-md bg-key-enter hover:opacity-90 text-white font-bold w-full justify-center shadow-lg transition-all">
+              <button onClick={onNewGame} className="flex px-8 py-4 rounded-xl bg-brand-muted-blue hover:opacity-90 text-white font-bold w-full justify-center shadow-lg transition-all">
                 ابدأ لعبة جديدة
               </button>
             </div>

@@ -25,14 +25,16 @@ const LetterComponent = ({ letter, bgColor }: Props) => {
   const baseClasses = "w-16 h-16 flex justify-center items-center text-3xl font-bold rounded-lg m-1 transition-all duration-300";
 
   const getBgColor = () => {
-    if (animateBgColor === letterColors.letterRight) return 'bg-letter-right';
-    if (animateBgColor === letterColors.letterExist) return 'bg-letter-exist';
-    if (animateBgColor === letterColors.letterAbsent) return 'bg-letter-absent';
-    return isFilled ? 'bg-tile-bg border-2 border-tile-active' : 'bg-tile-bg border-2 border-gray-500';
+    if (animateBgColor === letterColors.letterRight) return 'bg-brand-sage text-white';
+    if (animateBgColor === letterColors.letterExist) return 'bg-brand-sand text-white';
+    if (animateBgColor === letterColors.letterAbsent) return 'bg-brand-taupe text-white';
+    return isFilled
+      ? 'bg-white border-2 border-brand-charcoal text-brand-charcoal'
+      : 'bg-white/50 border-2 border-brand-charcoal/10 text-brand-charcoal';
   };
 
   return (
-    <div className={`${baseClasses} ${getBgColor()} text-white`}>
+    <div className={`${baseClasses} ${getBgColor()}`}>
       {letter}
     </div>
   );

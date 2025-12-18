@@ -10,8 +10,8 @@ const Header = ({ closeModal, setCloseModal }: Props) => {
     <header className="flex items-center justify-between w-full max-w-md mx-auto px-4 py-3" dir="rtl">
       <div className="flex gap-2">
         <button
-          className="p-1 rounded hover:bg-white/10 transition-colors text-white"
-          onClick={() => {}}
+          className="p-1 rounded hover:bg-brand-charcoal/5 transition-colors text-brand-charcoal"
+          onClick={() => { }}
           aria-label="Menu"
         >
           {/* Placeholder for Menu Icon */}
@@ -20,8 +20,8 @@ const Header = ({ closeModal, setCloseModal }: Props) => {
           </svg>
         </button>
         <button
-          className="p-1 rounded hover:bg-white/10 transition-colors text-white"
-          onClick={() => {}}
+          className="p-1 rounded hover:bg-brand-charcoal/5 transition-colors text-brand-charcoal"
+          onClick={() => { }}
           aria-label="Help"
         >
           {/* Placeholder for Help Icon */}
@@ -30,20 +30,25 @@ const Header = ({ closeModal, setCloseModal }: Props) => {
           </svg>
         </button>
       </div>
-      <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-purple-400 to-pink-600">
-        كلمة
-      </h1>
+      <div className="flex flex-col items-center">
+        <h1 className="text-4xl font-bold text-brand-charcoal">
+          كلمة
+        </h1>
+        <p className="text-xs font-bold text-brand-charcoal-dark mt-1 opacity-80">
+          خمن الكلمة
+        </p>
+      </div>
       <div className="flex gap-2">
         <button
-          className="p-1 rounded hover:bg-white/10 transition-colors text-white"
+          className="p-1 rounded hover:bg-brand-charcoal/5 transition-colors text-brand-charcoal"
           onClick={() => setCloseModal(false)}
           aria-label="Statistics"
         >
           <Statistics />
         </button>
         <button
-          className="p-1 rounded hover:bg-white/10 transition-colors text-white"
-          onClick={() => {}}
+          className="p-1 rounded hover:bg-brand-charcoal/5 transition-colors text-brand-charcoal"
+          onClick={() => { }}
           aria-label="Settings"
         >
           {/* Placeholder for Settings Icon */}

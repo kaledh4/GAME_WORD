@@ -224,10 +224,10 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
     const baseStyle = "cursor-pointer flex justify-center items-center rounded-md text-lg font-bold transition-all duration-150 select-none active:scale-95 shadow-sm h-12";
 
     const getColorClass = () => {
-      if (keyboardState[key] === letterColors.letterRight) return 'bg-green-600 text-white';
-      if (keyboardState[key] === letterColors.letterExist) return 'bg-amber-500 text-white';
-      if (keyboardState[key] === letterColors.letterAbsent) return 'bg-gray-700 text-gray-400';
-      return 'bg-gray-600 text-white hover:bg-gray-500';
+      if (keyboardState[key] === letterColors.letterRight) return 'bg-brand-sage text-white';
+      if (keyboardState[key] === letterColors.letterExist) return 'bg-brand-sand text-white';
+      if (keyboardState[key] === letterColors.letterAbsent) return 'bg-brand-taupe text-gray-500 opacity-60';
+      return 'bg-white text-brand-charcoal hover:bg-gray-50 border border-brand-charcoal/10';
     };
 
     return `${baseStyle} w-9 ${getColorClass()}`;
@@ -245,10 +245,10 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
       {/* Magic Help Button */}
       <div className="flex justify-center my-6 w-full" dir="rtl">
         <button
-          className="cursor-pointer flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold shadow-md transition-all duration-150 bg-amber-500 text-white hover:bg-amber-600 active:scale-95"
+          className="cursor-pointer flex items-center justify-center rounded-lg px-6 py-2.5 text-sm font-bold shadow-md transition-all duration-150 bg-brand-sand text-white hover:bg-brand-sand/90 active:scale-95"
           onClick={useMagicHelp}
         >
-          <span className="ml-1">✨</span>
+          <span className="ml-2">✨</span>
           <span>مساعدة سحرية</span>
         </button>
       </div>
@@ -259,7 +259,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
           <div key={rowIndex} className="flex justify-center w-full mb-1.5 gap-1" dir="rtl">
             {rowIndex === 2 && (
               <button
-                className="cursor-pointer flex justify-center items-center rounded-md text-sm font-bold transition-all duration-150 select-none active:scale-95 shadow-sm h-12 px-3 bg-blue-600 text-white hover:bg-blue-700"
+                className="cursor-pointer flex justify-center items-center rounded-md text-sm font-bold transition-all duration-150 select-none active:scale-95 shadow-sm h-12 px-4 bg-brand-muted-blue text-white hover:bg-brand-muted-blue/90"
                 onClick={() => handleKeyboardClick("Enter")}
               >
                 إدخال
@@ -276,7 +276,7 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
             ))}
             {rowIndex === 2 && (
               <button
-                className="cursor-pointer flex justify-center items-center rounded-md text-sm font-bold transition-all duration-150 select-none active:scale-95 shadow-sm h-12 px-3 bg-red-600 text-white hover:bg-red-700"
+                className="cursor-pointer flex justify-center items-center rounded-md text-sm font-bold transition-all duration-150 select-none active:scale-95 shadow-sm h-12 px-4 bg-brand-muted-red text-white hover:bg-brand-muted-red/90"
                 onClick={() => handleKeyboardClick("Backspace")}
               >
                 مسح

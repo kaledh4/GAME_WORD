@@ -6,37 +6,48 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Enhanced color palette
-        'darker': '#0a0e14',
-        'game-bg': '#1e293b', // Dark blue-gray from image
-        'tile-bg': '#334155', // Lighter gray for tiles
-        'tile-empty': '#334155', // Empty tile
-        'tile-absent': '#475569', // Gray for absent
-        'tile-present': '#ca8a04', // Yellow for present
-        'tile-correct': '#16a34a', // Green for correct
-        'key-bg': '#475569', // Gray for keyboard
-        'tile-active': '#f59e0b', // Amber for active tile border
-        'letter-right': '#16a34a', // Green for correct letter
-        'letter-exist': '#ca8a04', // Yellow for existing letter
-        'letter-absent': '#475569', // Gray for absent letter
-        
+        // Premium color palette inspired by the provided image
+        'brand': {
+          'bg-start': '#f2f0eb',
+          'bg-end': '#e8e6e1',
+          'charcoal': '#4a4a4a',
+          'charcoal-dark': '#2d2d2d',
+          'taupe': '#d1ccc0',
+          'sage': '#8a9a5b',
+          'sand': '#c2b280',
+          'muted-red': '#922b21',
+          'muted-blue': '#2c3e50',
+          'off-white': '#faf9f6',
+        },
+        'game-bg': '#f2f0eb',
+        'tile-bg': '#ffffff',
+        'tile-empty': '#ffffff',
+        'tile-absent': '#b0ada5',
+        'tile-present': '#c2b280',
+        'tile-correct': '#8a9a5b',
+        'key-bg': '#d1ccc0',
+        'tile-active': '#4a4a4a',
+        'letter-right': '#8a9a5b',
+        'letter-exist': '#c2b280',
+        'letter-absent': '#b0ada5',
+
         // Custom color scheme
         'primary': {
-          DEFAULT: '#10b981',
-          dark: '#059669',
-          light: '#34d399',
+          DEFAULT: '#4a4a4a',
+          dark: '#2d2d2d',
+          light: '#7a7a7a',
         },
         'accent': {
-          gold: '#d4af37',
-          emerald: '#10b981',
-          ruby: '#ef4444',
-          sapphire: '#3b82f6',
-          amber: '#f59e0b',
+          gold: '#c2b280',
+          emerald: '#8a9a5b',
+          ruby: '#922b21',
+          sapphire: '#2c3e50',
+          amber: '#d4af37',
         },
         'surface': {
-          DEFAULT: 'rgba(255, 255, 255, 0.05)',
-          hover: 'rgba(255, 255, 255, 0.08)',
-          active: 'rgba(255, 255, 255, 0.12)',
+          DEFAULT: 'rgba(74, 74, 74, 0.05)',
+          hover: 'rgba(74, 74, 74, 0.08)',
+          active: 'rgba(74, 74, 74, 0.12)',
         },
       },
       fontFamily: {
@@ -45,10 +56,10 @@ module.exports = {
         'elegant': ['Amiri', 'serif'],
       },
       boxShadow: {
-        'glow-emerald': '0 0 20px rgba(16, 185, 129, 0.3)',
-        'glow-amber': '0 0 20px rgba(245, 158, 11, 0.3)',
-        'glow-gold': '0 0 20px rgba(212, 175, 55, 0.2)',
-        'inner-light': 'inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+        'glow-emerald': '0 0 20px rgba(138, 154, 91, 0.3)',
+        'glow-amber': '0 0 20px rgba(194, 178, 128, 0.3)',
+        'glow-gold': '0 0 20px rgba(194, 178, 128, 0.2)',
+        'inner-light': 'inset 0 1px 0 rgba(255, 255, 255, 0.5)',
       },
       animation: {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',

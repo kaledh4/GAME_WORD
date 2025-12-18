@@ -6,25 +6,26 @@
 
 @layer base {
   :root {
-    /* Enhanced Color Palette - Arabic-inspired rich tones */
-    --color-bg-primary: #0a0e14;
-    --color-bg-secondary: #111827;
-    --color-bg-tertiary: #1a2332;
+    /* Premium Color Palette - Minimalist & Elegant */
+    --color-bg-primary: #f2f0eb;
+    --color-bg-secondary: #e8e6e1;
+    --color-bg-tertiary: #faf9f6;
     
-    --color-accent-gold: #d4af37;
-    --color-accent-emerald: #10b981;
-    --color-accent-ruby: #ef4444;
-    --color-accent-sapphire: #3b82f6;
-    --color-accent-amber: #f59e0b;
+    --color-brand-charcoal: #4a4a4a;
+    --color-brand-taupe: #d1ccc0;
+    --color-brand-sage: #8a9a5b;
+    --color-brand-sand: #c2b280;
+    --color-brand-red: #922b21;
+    --color-brand-blue: #2c3e50;
     
-    --color-surface: rgba(255, 255, 255, 0.05);
-    --color-surface-hover: rgba(255, 255, 255, 0.08);
-    --color-border: rgba(255, 255, 255, 0.1);
+    --color-surface: rgba(74, 74, 74, 0.05);
+    --color-surface-hover: rgba(74, 74, 74, 0.08);
+    --color-border: rgba(74, 74, 74, 0.1);
     
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-    --shadow-glow: 0 0 20px rgba(212, 175, 55, 0.2);
+    --shadow-sm: 0 2px 8px rgba(74, 74, 74, 0.1);
+    --shadow-md: 0 4px 16px rgba(74, 74, 74, 0.15);
+    --shadow-lg: 0 8px 32px rgba(74, 74, 74, 0.2);
+    --shadow-glow: 0 0 20px rgba(194, 178, 128, 0.2);
     
     /* Typography */
     --font-display: 'Cairo', sans-serif;
@@ -33,7 +34,8 @@
   }
   
   body {
-    @apply bg-game-bg text-white overflow-hidden;
+    background: radial-gradient(circle at center, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+    @apply text-brand-charcoal overflow-hidden min-h-screen;
     font-family: var(--font-body);
   }
   
@@ -61,23 +63,23 @@
     @apply backdrop-blur-xl rounded-2xl shadow-xl relative;
     background: linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.08) 0%,
-      rgba(255, 255, 255, 0.04) 100%
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(255, 255, 255, 0.4) 100%
     );
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(74, 74, 74, 0.1);
     box-shadow: 
       var(--shadow-md),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .glass-panel:hover {
     background: linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(255, 255, 255, 0.06) 100%
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0.5) 100%
     );
-    border-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(74, 74, 74, 0.15);
     transform: translateY(-1px);
   }
   
@@ -106,13 +108,13 @@
     opacity: 1;
   }
 
-  /* Primary Button with Gold Accent */
+  /* Primary Button with Charcoal Accent */
   .btn-primary {
     @apply text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 relative overflow-hidden;
-    background: linear-gradient(135deg, var(--color-accent-emerald) 0%, #059669 100%);
+    background: linear-gradient(135deg, var(--color-brand-charcoal) 0%, var(--color-brand-blue) 100%);
     box-shadow: 
       var(--shadow-md),
-      0 0 0 rgba(16, 185, 129, 0.4);
+      0 0 0 rgba(44, 62, 80, 0.4);
     font-family: var(--font-display);
     font-weight: 700;
     letter-spacing: 0.02em;
@@ -148,12 +150,13 @@
   .key-btn {
     @apply flex items-center justify-center rounded-lg font-bold transition-all duration-200 select-none relative;
     font-family: var(--font-display);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+    border: 1px solid rgba(74, 74, 74, 0.1);
     box-shadow: 
       var(--shadow-sm),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
     cursor: pointer;
+    color: var(--color-brand-charcoal);
   }
   
   .key-btn::after {
@@ -180,31 +183,33 @@
     transform: translateY(0) scale(0.95);
   }
   
-  /* Correct Letter - Emerald with glow */
+  /* Correct Letter - Sage with glow */
   .key-btn.correct {
-    background: linear-gradient(135deg, var(--color-accent-emerald) 0%, #059669 100%);
-    border-color: #10b981;
+    background: linear-gradient(135deg, var(--color-brand-sage) 0%, #7a8a4b 100%);
+    border-color: var(--color-brand-sage);
     box-shadow: 
       var(--shadow-sm),
-      0 0 15px rgba(16, 185, 129, 0.3);
+      0 0 15px rgba(138, 154, 91, 0.3);
     animation: correctPulse 0.6s ease-out;
+    color: white;
   }
   
-  /* Present Letter - Amber with glow */
+  /* Present Letter - Sand with glow */
   .key-btn.present {
-    background: linear-gradient(135deg, var(--color-accent-amber) 0%, #d97706 100%);
-    border-color: #f59e0b;
+    background: linear-gradient(135deg, var(--color-brand-sand) 0%, #b2a270 100%);
+    border-color: var(--color-brand-sand);
     box-shadow: 
       var(--shadow-sm),
-      0 0 15px rgba(245, 158, 11, 0.3);
+      0 0 15px rgba(194, 178, 128, 0.3);
     animation: presentPulse 0.6s ease-out;
+    color: white;
   }
   
-  /* Absent Letter - Dark with subtle border */
+  /* Absent Letter - Muted with subtle border */
   .key-btn.absent {
-    background: linear-gradient(135deg, rgba(75, 85, 99, 0.5) 0%, rgba(55, 65, 81, 0.5) 100%);
-    border-color: rgba(107, 114, 128, 0.3);
-    color: rgba(255, 255, 255, 0.4);
+    background: linear-gradient(135deg, #b0ada5 0%, #a09d95 100%);
+    border-color: rgba(74, 74, 74, 0.1);
+    color: rgba(255, 255, 255, 0.8);
   }
   
   /* Letter Tile Animations */
@@ -247,40 +252,43 @@
     font-family: var(--font-display);
     font-size: 2rem;
     font-weight: 900;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
-    border: 2px solid rgba(255, 255, 255, 0.15);
+    background: #ffffff;
+    border: 2px solid rgba(74, 74, 74, 0.1);
     box-shadow: var(--shadow-sm);
     perspective: 1000px;
+    color: var(--color-brand-charcoal);
   }
   
   .letter-tile.filled {
-    border-color: rgba(255, 255, 255, 0.3);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.06) 100%);
+    border-color: var(--color-brand-charcoal);
+    background: #ffffff;
     animation: tileBounce 0.3s ease;
   }
   
   .letter-tile.correct {
-    background: linear-gradient(135deg, var(--color-accent-emerald) 0%, #059669 100%);
-    border-color: #10b981;
+    background: linear-gradient(135deg, var(--color-brand-sage) 0%, #7a8a4b 100%);
+    border-color: var(--color-brand-sage);
     box-shadow: 
       var(--shadow-sm),
-      0 0 20px rgba(16, 185, 129, 0.4);
+      0 0 20px rgba(138, 154, 91, 0.4);
     animation: tileFlip 0.6s ease;
+    color: white;
   }
   
   .letter-tile.present {
-    background: linear-gradient(135deg, var(--color-accent-amber) 0%, #d97706 100%);
-    border-color: #f59e0b;
+    background: linear-gradient(135deg, var(--color-brand-sand) 0%, #b2a270 100%);
+    border-color: var(--color-brand-sand);
     box-shadow: 
       var(--shadow-sm),
-      0 0 20px rgba(245, 158, 11, 0.4);
+      0 0 20px rgba(194, 178, 128, 0.4);
     animation: tileFlip 0.6s ease;
+    color: white;
   }
   
   .letter-tile.absent {
-    background: linear-gradient(135deg, rgba(75, 85, 99, 0.6) 0%, rgba(55, 65, 81, 0.6) 100%);
-    border-color: rgba(107, 114, 128, 0.4);
-    color: rgba(255, 255, 255, 0.5);
+    background: linear-gradient(135deg, #b0ada5 0%, #a09d95 100%);
+    border-color: rgba(74, 74, 74, 0.1);
+    color: white;
     animation: tileFlip 0.6s ease;
   }
   

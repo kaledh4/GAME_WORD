@@ -19,10 +19,10 @@ function App() {
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col text-white safe-top bg-game-bg">
+    <div className="w-full min-h-screen flex flex-col text-brand-charcoal safe-top">
       {/* Header at top */}
       <Header closeModal={closeModal} setCloseModal={setCloseModal} />
-      
+
       {/* Game Container - centered with flex-grow */}
       <div className="flex-1 flex flex-col items-center justify-between px-4 py-2">
         <Board
@@ -44,9 +44,9 @@ function App() {
         onNewGame={handleNewGame}
         usedMagicHelp={usedMagicHelp}
       />
-      
+
       {/* Footer */}
-      <div className="text-center text-xs text-white/30 font-light py-2">
+      <div className="text-center text-xs text-brand-charcoal/30 font-light py-2">
         <p>صُنع بـ ❤️ للغة العربية</p>
       </div>
     </div>
