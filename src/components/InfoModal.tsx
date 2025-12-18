@@ -42,17 +42,29 @@ const InfoModal = ({ isOpen, onClose, type }: Props) => {
         if (type === "menu") {
             return (
                 <div className="w-full flex flex-col items-center text-center">
-                    <h2 className="text-2xl font-bold mb-6 text-brand-charcoal">المساعدة السحرية</h2>
+                    <h2 className="text-2xl font-bold mb-6 text-brand-charcoal">كيف تعمل؟</h2>
 
-                    <div className="bg-brand-sage/10 p-6 rounded-2xl mb-8 w-full">
+                    <div className="bg-brand-sage/10 p-6 rounded-2xl mb-4 w-full">
                         <h3 className="font-bold text-brand-sage mb-3 flex items-center justify-center">
-                            <span className="ml-2">✨</span> كيف تعمل؟
+                            <span className="ml-2">🪄</span> المساعدة السحرية
                         </h3>
-                        <p className="text-brand-charcoal/80 leading-relaxed">
+                        <p className="text-brand-charcoal/80 leading-relaxed text-sm">
                             عندما تشعر بالحيرة، يمكنك الضغط على زر المساعدة السحرية. ستقوم اللعبة تلقائياً باختيار مكان لم تكتشفه بعد وتضع فيه الحرف الصحيح المناسب له.
                         </p>
-                        <p className="mt-4 text-sm font-bold text-brand-charcoal/70">
+                        <p className="mt-3 text-xs font-bold text-brand-charcoal/70">
                             ملاحظة: استخدام المساعدة السحرية يعني أنك لن تحصل على درجة كاملة في هذه الجولة!
+                        </p>
+                    </div>
+
+                    <div className="bg-brand-muted-blue/10 p-6 rounded-2xl mb-8 w-full">
+                        <h3 className="font-bold text-brand-muted-blue mb-3 flex items-center justify-center">
+                            <span className="ml-2">🏎️</span> ميزة التسريع
+                        </h3>
+                        <p className="text-brand-charcoal/80 leading-relaxed text-sm">
+                            تقوم ميزة التسريع بتجربة 4 كلمات استراتيجية تلقائياً لتوفير الوقت والجهد في بداية اللعبة.
+                        </p>
+                        <p className="mt-3 text-xs font-bold text-brand-charcoal/70">
+                            ملاحظة: هذه الميزة لا تؤثر على الدرجة النهائية.
                         </p>
                     </div>
 

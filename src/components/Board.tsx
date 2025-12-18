@@ -110,6 +110,53 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
     setToastData((prev) => [...prev, "تم كشف حرف جديد!"]);
   };
 
+  const useAccelerate = (): void => {
+    if (disableKeyBoard || wordIndexRef.current >= 4) return;
+
+    const accelerateWords = ["ايمن", "سلوك", "تهدف", "برقع"];
+    const newBoardWords = [...boardWords];
+    const newWordColors = [...wordColors];
+    const newKeyboardState = { ...keyboardState };
+
+    let stopAt = 4;
+    for (let i = 0; i < 4; i++) {
+      const word = accelerateWords[i];
+      const wordChars = word.split("");
+      newBoardWords[i] = wordChars;
+      const resultColors = compare(wordChars, rightWord.split(""));
+
+      if (i < newWordColors.length) {
+        newWordColors[i] = resultColors;
+      } else {
+        newWordColors.push(resultColors);
+      }
+
+      wordChars.forEach((char, charIndex) => {
+        const color = resultColors[charIndex];
+        const currentColor = newKeyboardState[char];
+        if (color === letterColors.letterRight) {
+          newKeyboardState[char] = letterColors.letterRight;
+        } else if (color === letterColors.letterExist && currentColor !== letterColors.letterRight) {
+          newKeyboardState[char] = letterColors.letterExist;
+        } else if (color === letterColors.letterAbsent && !currentColor) {
+          newKeyboardState[char] = letterColors.letterAbsent;
+        }
+      });
+
+      if (word === rightWord) {
+        stopAt = i + 1;
+        break;
+      }
+    }
+
+    setBoardWords(newBoardWords);
+    setWordColors(newWordColors);
+    setKeyboardState(newKeyboardState);
+    wordIndexRef.current = stopAt;
+
+    setToastData((prev) => [...prev, "تم التسريع! 🏎️"]);
+  };
+
   const handleEnter = (): void => {
     if (typedWord.length === 4) {
       if (wordsList.includes(typedWord)) {
@@ -245,14 +292,22 @@ const Board = ({ wordColors, setWordColors, setCloseModal, setGameResult, onNewG
         ))}
       </div>
 
-      {/* Magic Help Button */}
-      <div className="flex justify-center my-6 w-full" dir="rtl">
+      {/* Action Buttons */}
+      <div className="flex justify-center my-6 w-full gap-4" dir="rtl">
         <button
           className="cursor-pointer flex items-center justify-center rounded-lg px-6 py-2.5 text-sm font-bold shadow-md transition-all duration-150 bg-brand-sand text-white hover:bg-brand-sand/90 active:scale-95"
           onClick={useMagicHelp}
         >
-          <span className="ml-2">✨</span>
+          <span className="ml-2">🪄</span>
           <span>مساعدة سحرية</span>
+        </button>
+
+        <button
+          className="cursor-pointer flex items-center justify-center rounded-lg px-6 py-2.5 text-sm font-bold shadow-md transition-all duration-150 bg-brand-muted-blue text-white hover:bg-brand-muted-blue/90 active:scale-95"
+          onClick={useAccelerate}
+        >
+          <span className="ml-2">🏎️</span>
+          <span>تسريع</span>
         </button>
       </div>
 

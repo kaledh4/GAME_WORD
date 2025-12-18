@@ -117,7 +117,7 @@ const Modal = ({ gameResult, data, closeModal, setCloseModal, onNewGame, usedMag
           {gameResult !== "idle" && (
             <div className="flex flex-col w-full items-center gap-3">
               {usedMagicHelp && (
-                <p className="text-sm text-brand-charcoal/60 mb-1 bg-brand-sand/10 px-3 py-1 rounded-full">تم استخدام المساعدة السحرية ✨</p>
+                <p className="text-sm text-brand-charcoal/60 mb-1 bg-brand-sand/10 px-3 py-1 rounded-full">تم استخدام المساعدة السحرية 🪄</p>
               )}
               <div className="flex w-full gap-3">
                 <button onClick={handleShare} className="flex-1 flex px-4 py-4 rounded-xl bg-brand-sage hover:opacity-90 text-white font-bold justify-center shadow-lg transition-all items-center">
